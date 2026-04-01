@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */; };
+		053AD6E015B8ABA577F87F69 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */; };
+		09513863534A1021F714A22F /* CallTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8EF9644FAD5E60835221A /* CallTimeCard.swift */; };
+		12C7DDD1E3B19F6FA6EBDB69 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E75E74E5815CA19D52B16 /* MacApp.swift */; };
+		196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
+		1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */; };
+		28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DA5F2B41378E912C05E57 /* HeaderView.swift */; };
+		2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
+		31DE929232A5FCF2C915509A /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
+		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
+		4FB7F536DB21623876599497 /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5FFF954A466568E403B6E /* MacContentView.swift */; };
+		53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F314ECB9199FFB80DD1DC /* GlassCard.swift */; };
+		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
+		66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
+		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
+		70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */; };
+		71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */; };
+		73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
+		7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */; };
+		8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */; };
+		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
+		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
+		AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49769C57E302C878CA2D9504 /* NotesCard.swift */; };
+		ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDBFA499148B60BFA2226E /* CallLogService.swift */; };
+		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
+		C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
+		C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */; };
+		CA0542E027362DC747973274 /* CallStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30394B7F62AD2FDEA02F9D90 /* CallStats.swift */; };
+		CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */; };
+		D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
+		DBC688F96A38441C1766CAED /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
+		DDF359535AC735690EBBE159 /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
+		DEB4DF5AF975D4403B73BC95 /* RankingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81825180D2635DAF76A7CA1 /* RankingService.swift */; };
+		E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684E431D3F03099B3886B67E /* ContentView.swift */; };
+		E96D30A553462B16E7F5E390 /* CallStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30394B7F62AD2FDEA02F9D90 /* CallStats.swift */; };
+		E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7340CD645540A8206811A2 /* LongestConvoCard.swift */; };
+		F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */; };
+		F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
+		F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09D52C21D68CDF154303127E /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		0B4DA5F2B41378E912C05E57 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
+		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipAnalyticsApp.swift; sourceTree = "<group>"; };
+		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
+		3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTimeCard.swift; sourceTree = "<group>"; };
+		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
+		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
+		7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RelationshipAnalytics-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouStartCard.swift; sourceTree = "<group>"; };
+		87C06589087958EE60502677 /* RelationshipAnalytics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RelationshipAnalytics.entitlements; sourceTree = "<group>"; };
+		99F8EF9644FAD5E60835221A /* CallTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCard.swift; sourceTree = "<group>"; };
+		9A95F46592433559B2F00B38 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
+		A369835231B408935C0FAA75 /* CloudKitSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncService.swift; sourceTree = "<group>"; };
+		AB7340CD645540A8206811A2 /* LongestConvoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestConvoCard.swift; sourceTree = "<group>"; };
+		AF28E107A1E124AC60C26C62 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
+		B5FDBFA499148B60BFA2226E /* CallLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogService.swift; sourceTree = "<group>"; };
+		BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDatabaseService.swift; sourceTree = "<group>"; };
+		C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveStreakCard.swift; sourceTree = "<group>"; };
+		C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentReceivedCard.swift; sourceTree = "<group>"; };
+		C47E75E74E5815CA19D52B16 /* MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacApp.swift; sourceTree = "<group>"; };
+		C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		C5082C202F0B148267454573 /* MockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataProvider.swift; sourceTree = "<group>"; };
+		C84F89D8100E35B4B029FDC6 /* MessageStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStats.swift; sourceTree = "<group>"; };
+		CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
+		D61F314ECB9199FFB80DD1DC /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActivityHeatmap.swift; sourceTree = "<group>"; };
+		E81825180D2635DAF76A7CA1 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
+		ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMessagesCard.swift; sourceTree = "<group>"; };
+		F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		FCD5FFF954A466568E403B6E /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0C0E0264C9D34211C6BE405B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */,
+				7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0DD10A6829F8D61B821884D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19827E92542452E6969E35D2 /* Components */,
+				54009680EC3D3DAFB09935A5 /* ContactDetail */,
+				CA38A6803027C65AB1E07D1F /* ContactList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19827E92542452E6969E35D2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D61F314ECB9199FFB80DD1DC /* GlassCard.swift */,
+				9A95F46592433559B2F00B38 /* GradientBackground.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1D2770F5840B290F42FBDDB7 = {
+			isa = PBXGroup;
+			children = (
+				3C1081EE897CE78073CA997C /* iOS */,
+				5289B4411AF73098522F8D42 /* macOS */,
+				3CA8F3E9D1E984A8F649A50A /* Shared */,
+				0C0E0264C9D34211C6BE405B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		243DBFD3AF415BC9446D8D24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C1081EE897CE78073CA997C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB82F81335EB818463AB51 /* App */,
+				243DBFD3AF415BC9446D8D24 /* Resources */,
+				0DD10A6829F8D61B821884D7 /* Views */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		3CA8F3E9D1E984A8F649A50A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				81DD79AAB98FFA6EDE4E392A /* Models */,
+				56AA16EB5376A0204BCC2DCD /* Services */,
+				8215F4F6CD31A1EE526A5297 /* Theme */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5289B4411AF73098522F8D42 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				87C06589087958EE60502677 /* RelationshipAnalytics.entitlements */,
+				AEA6AA5A293235AB791BAC5C /* App */,
+				FDA4F4676A5AFCFBC392C220 /* Resources */,
+				F9CC7C1C2C1F560CBD25459D /* Services */,
+				CA3CD28E2B31C62BC99D04C7 /* Views */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		54009680EC3D3DAFB09935A5 /* ContactDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */,
+				99F8EF9644FAD5E60835221A /* CallTimeCard.swift */,
+				C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */,
+				ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */,
+				0B4DA5F2B41378E912C05E57 /* HeaderView.swift */,
+				AB7340CD645540A8206811A2 /* LongestConvoCard.swift */,
+				E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */,
+				49769C57E302C878CA2D9504 /* NotesCard.swift */,
+				1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */,
+				3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */,
+				C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */,
+				82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */,
+			);
+			path = ContactDetail;
+			sourceTree = "<group>";
+		};
+		56AA16EB5376A0204BCC2DCD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A369835231B408935C0FAA75 /* CloudKitSyncService.swift */,
+				C5082C202F0B148267454573 /* MockDataProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		81DD79AAB98FFA6EDE4E392A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30394B7F62AD2FDEA02F9D90 /* CallStats.swift */,
+				5EB229CE6935667A32DEAD38 /* Contact.swift */,
+				7BE26E529B223C3D3E1F57AF /* ContactNote.swift */,
+				C84F89D8100E35B4B029FDC6 /* MessageStats.swift */,
+				AF28E107A1E124AC60C26C62 /* RankData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8215F4F6CD31A1EE526A5297 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				09D52C21D68CDF154303127E /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		AEA6AA5A293235AB791BAC5C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C47E75E74E5815CA19D52B16 /* MacApp.swift */,
+				CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CA38A6803027C65AB1E07D1F /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+				F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */,
+			);
+			path = ContactList;
+			sourceTree = "<group>";
+		};
+		CA3CD28E2B31C62BC99D04C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCD5FFF954A466568E403B6E /* MacContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D1DB82F81335EB818463AB51 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				684E431D3F03099B3886B67E /* ContentView.swift */,
+				259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F9CC7C1C2C1F560CBD25459D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5FDBFA499148B60BFA2226E /* CallLogService.swift */,
+				BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */,
+				E81825180D2635DAF76A7CA1 /* RankingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FDA4F4676A5AFCFBC392C220 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F2B9DE9D4E0DD575A84802D /* RelationshipAnalytics-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773F37856B23FF6B26349606 /* Build configuration list for PBXNativeTarget "RelationshipAnalytics-macOS" */;
+			buildPhases = (
+				A87FE360408F35D4F493E0CD /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RelationshipAnalytics-macOS";
+			packageProductDependencies = (
+			);
+			productName = "RelationshipAnalytics-macOS";
+			productReference = 7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A331987C59D93B4E82F0AD63 /* RelationshipAnalytics-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8418415BB0600761219D6AAF /* Build configuration list for PBXNativeTarget "RelationshipAnalytics-iOS" */;
+			buildPhases = (
+				98583273B6A4B9B1569835ED /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RelationshipAnalytics-iOS";
+			packageProductDependencies = (
+			);
+			productName = "RelationshipAnalytics-iOS";
+			productReference = 1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EB0CABE83862E567EA7A5C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					9F2B9DE9D4E0DD575A84802D = {
+						DevelopmentTeam = "";
+					};
+					A331987C59D93B4E82F0AD63 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = CEBD4F9F89AB17443728015D /* Build configuration list for PBXProject "RelationshipAnalytics" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1D2770F5840B290F42FBDDB7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A331987C59D93B4E82F0AD63 /* RelationshipAnalytics-iOS */,
+				9F2B9DE9D4E0DD575A84802D /* RelationshipAnalytics-macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98583273B6A4B9B1569835ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */,
+				66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */,
+				CA0542E027362DC747973274 /* CallStats.swift in Sources */,
+				09513863534A1021F714A22F /* CallTimeCard.swift in Sources */,
+				F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */,
+				DBC688F96A38441C1766CAED /* Contact.swift in Sources */,
+				8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */,
+				6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */,
+				73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */,
+				E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */,
+				F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */,
+				53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */,
+				9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */,
+				28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */,
+				E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */,
+				1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */,
+				C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */,
+				F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */,
+				AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */,
+				BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */,
+				71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */,
+				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
+				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
+				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
+				C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A87FE360408F35D4F493E0CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */,
+				ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */,
+				E96D30A553462B16E7F5E390 /* CallStats.swift in Sources */,
+				196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */,
+				8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */,
+				D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */,
+				12C7DDD1E3B19F6FA6EBDB69 /* MacApp.swift in Sources */,
+				4FB7F536DB21623876599497 /* MacContentView.swift in Sources */,
+				7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */,
+				DDF359535AC735690EBBE159 /* MessageStats.swift in Sources */,
+				2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */,
+				31DE929232A5FCF2C915509A /* RankData.swift in Sources */,
+				DEB4DF5AF975D4403B73BC95 /* RankingService.swift in Sources */,
+				053AD6E015B8ABA577F87F69 /* SyncManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		047D4AD2D2843E245B128E18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_VALUES = {
+					CFBundleDisplayName = "Relationship Analytics Sync";
+					CFBundleName = RelationshipAnalyticsSync;
+					CFBundleShortVersionString = 1.0.0;
+					CFBundleVersion = 1;
+					LSUIElement = NO;
+				};
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.macos;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5508E04ED11520976182ACD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_VALUES = {
+					CFBundleDisplayName = "Relationship Analytics";
+					CFBundleName = RelationshipAnalytics;
+					CFBundleShortVersionString = 1.0.0;
+					CFBundleVersion = 1;
+					UILaunchScreen = {
+					};
+					UISupportedInterfaceOrientations = (
+						UIInterfaceOrientationPortrait,
+					);
+				};
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6A010C5EBAF04C2EA182557C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_VALUES = {
+					CFBundleDisplayName = "Relationship Analytics";
+					CFBundleName = RelationshipAnalytics;
+					CFBundleShortVersionString = 1.0.0;
+					CFBundleVersion = 1;
+					UILaunchScreen = {
+					};
+					UISupportedInterfaceOrientations = (
+						UIInterfaceOrientationPortrait,
+					);
+				};
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		79D0357690D253EC99A57BD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		846C4ED7902A7F913451F1B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		ED1B1C8E0ED61E1992A5657E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_VALUES = {
+					CFBundleDisplayName = "Relationship Analytics Sync";
+					CFBundleName = RelationshipAnalyticsSync;
+					CFBundleShortVersionString = 1.0.0;
+					CFBundleVersion = 1;
+					LSUIElement = NO;
+				};
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.macos;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		773F37856B23FF6B26349606 /* Build configuration list for PBXNativeTarget "RelationshipAnalytics-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED1B1C8E0ED61E1992A5657E /* Debug */,
+				047D4AD2D2843E245B128E18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8418415BB0600761219D6AAF /* Build configuration list for PBXNativeTarget "RelationshipAnalytics-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A010C5EBAF04C2EA182557C /* Debug */,
+				5508E04ED11520976182ACD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CEBD4F9F89AB17443728015D /* Build configuration list for PBXProject "RelationshipAnalytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79D0357690D253EC99A57BD8 /* Debug */,
+				846C4ED7902A7F913451F1B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2EB0CABE83862E567EA7A5C0 /* Project object */;
+}
