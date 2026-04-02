@@ -7,21 +7,19 @@ struct ReplyTimeCard: View {
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                // Title
                 HStack {
-                    Text("Reply time")
+                    Text("REPLY TIME")
                         .font(AppTheme.cardTitle)
                         .foregroundStyle(AppTheme.textPrimary)
                     Spacer()
-                    Text("All time")
+                    Text("ALL TIME")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
 
-                // Stats row
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("You")
+                        Text("YOU")
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                         Text(stats.yourReplyTimeFormatted)
@@ -32,7 +30,7 @@ struct ReplyTimeCard: View {
                     Spacer()
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(contactName)
+                        Text(contactName.uppercased())
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                         Text(stats.theirReplyTimeFormatted)
@@ -41,9 +39,8 @@ struct ReplyTimeCard: View {
                     }
                 }
 
-                // Insight
                 let faster = stats.theirReplyTime < stats.yourReplyTime ? contactName : "You"
-                Text("\(faster) usually replies faster.")
+                Text("\(faster) usually replies faster.".uppercased())
                     .font(AppTheme.caption)
                     .foregroundStyle(AppTheme.textMuted)
             }
@@ -54,5 +51,5 @@ struct ReplyTimeCard: View {
 #Preview {
     ReplyTimeCard(stats: MockDataProvider.messageStats, contactName: "Nina")
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

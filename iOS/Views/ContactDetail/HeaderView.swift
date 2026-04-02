@@ -8,33 +8,37 @@ struct HeaderView: View {
             // Avatar
             ZStack {
                 Circle()
-                    .fill(Color(hex: "374151"))
+                    .fill(Color(hex: "1A1A1A"))
                     .frame(width: 64, height: 64)
+                    .overlay(
+                        Circle()
+                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                    )
 
                 Text(contact.initials)
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.system(size: 24, weight: .semibold, design: .monospaced))
                     .foregroundStyle(AppTheme.textPrimary)
             }
 
             // Name
-            Text(contact.name)
-                .font(.system(size: 22, weight: .bold))
+            Text(contact.name.uppercased())
+                .font(.system(size: 22, weight: .bold, design: .monospaced))
                 .foregroundStyle(AppTheme.textPrimary)
 
             // Talking since
-            Text(contact.talkingSinceFormatted)
+            Text(contact.talkingSinceFormatted.uppercased())
                 .font(AppTheme.cardSubtitle)
                 .foregroundStyle(AppTheme.textSecondary)
 
             // Duration badge
-            Text(contact.talkingDuration)
+            Text(contact.talkingDuration.uppercased())
                 .font(AppTheme.caption)
                 .foregroundStyle(AppTheme.textSecondary)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
                 .background(
-                    Capsule()
-                        .fill(Color.white.opacity(0.08))
+                    RoundedRectangle(cornerRadius: 4)
+                        .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
                 )
         }
         .frame(maxWidth: .infinity)
@@ -45,5 +49,5 @@ struct HeaderView: View {
 
 #Preview {
     HeaderView(contact: MockDataProvider.contact)
-        .background(AppTheme.background)
+        .background(Color.black)
 }

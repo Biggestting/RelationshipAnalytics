@@ -8,32 +8,35 @@ struct FirstMessagesCard: View {
             GlassCard {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
-                        Text("First messages")
+                        Text("FIRST MESSAGES")
                             .font(AppTheme.cardTitle)
                             .foregroundStyle(AppTheme.textPrimary)
                         Spacer()
                         HStack(spacing: 4) {
-                            Text("Jump")
+                            Text("JUMP")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                             Image(systemName: "chevron.right")
-                                .font(.system(size: 8, weight: .semibold))
+                                .font(.system(size: 8, weight: .medium))
                                 .foregroundStyle(AppTheme.textMuted)
                         }
                     }
 
-                    // Message bubble
                     HStack {
                         if message.isFromUser { Spacer() }
 
                         Text(message.text)
                             .font(AppTheme.bodyText)
                             .foregroundStyle(.white)
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
                             .background(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(message.isFromUser ? AppTheme.primaryPink : Color(hex: "374151"))
+                                RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                    .fill(Color(hex: "1A1A1A"))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                                    )
                             )
 
                         if !message.isFromUser { Spacer() }
@@ -47,5 +50,5 @@ struct FirstMessagesCard: View {
 #Preview {
     FirstMessagesCard(firstMessage: MockDataProvider.messageStats.firstMessageSent)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

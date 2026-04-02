@@ -6,15 +6,15 @@ struct YouStartCard: View {
     var body: some View {
         GlassCard {
             VStack(spacing: 8) {
-                Text("You start")
+                Text("YOU START")
                     .font(AppTheme.cardTitle)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Text("\(Int(percentage))%")
-                    .font(.system(size: 38, weight: .bold, design: .rounded))
-                    .foregroundStyle(AppTheme.primaryPink)
+                    .font(.system(size: 36, weight: .bold, design: .monospaced))
+                    .foregroundStyle(AppTheme.textPrimary)
 
-                Text("of conversations")
+                Text("OF CONVERSATIONS")
                     .font(AppTheme.caption)
                     .foregroundStyle(AppTheme.textSecondary)
             }
@@ -26,5 +26,5 @@ struct YouStartCard: View {
 #Preview {
     YouStartCard(percentage: 74)
         .frame(width: 170)
-        .background(AppTheme.background)
+        .background(Color.black)
 }

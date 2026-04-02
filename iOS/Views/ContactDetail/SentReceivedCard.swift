@@ -6,38 +6,35 @@ struct SentReceivedCard: View {
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                // Title row
                 HStack {
-                    Text("Sent vs Received")
+                    Text("SENT VS RECEIVED")
                         .font(AppTheme.cardTitle)
                         .foregroundStyle(AppTheme.textPrimary)
                     Spacer()
-                    Text("All time")
+                    Text("ALL TIME")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
 
-                // Progress bar
                 GeometryReader { geometry in
                     let sentWidth = geometry.size.width * (stats.sentPercentage / 100)
                     HStack(spacing: 2) {
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(AppTheme.primaryPink)
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color.white)
                             .frame(width: sentWidth)
 
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(AppTheme.primaryPink.opacity(0.3))
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(Color.white.opacity(0.15))
                     }
                 }
-                .frame(height: 8)
+                .frame(height: 6)
 
-                // Labels
                 HStack {
-                    Text("\(stats.totalSent) sent (\(Int(stats.sentPercentage))%)")
+                    Text("\(stats.totalSent) SENT (\(Int(stats.sentPercentage))%)")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textSecondary)
                     Spacer()
-                    Text("\(stats.totalReceived) received (\(Int(stats.receivedPercentage))%)")
+                    Text("\(stats.totalReceived) RECEIVED (\(Int(stats.receivedPercentage))%)")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
@@ -49,5 +46,5 @@ struct SentReceivedCard: View {
 #Preview {
     SentReceivedCard(stats: MockDataProvider.messageStats)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

@@ -14,6 +14,8 @@ struct MessageStats: Codable {
     let longestConvo: ConversationInfo?
     let firstMessageSent: MessagePreview?
     let firstMessageReceived: MessagePreview?
+    let messagesEdited: Int
+    let messagesUnsent: Int
 
     var sentPercentage: Double {
         guard totalMessages > 0 else { return 0 }
@@ -23,6 +25,16 @@ struct MessageStats: Codable {
     var receivedPercentage: Double {
         guard totalMessages > 0 else { return 0 }
         return Double(totalReceived) / Double(totalMessages) * 100
+    }
+
+    var editedPercentage: Double {
+        guard totalMessages > 0 else { return 0 }
+        return Double(messagesEdited) / Double(totalMessages) * 100
+    }
+
+    var unsentPercentage: Double {
+        guard totalMessages > 0 else { return 0 }
+        return Double(messagesUnsent) / Double(totalMessages) * 100
     }
 
     var yourReplyTimeFormatted: String {

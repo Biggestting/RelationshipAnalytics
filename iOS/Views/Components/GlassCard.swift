@@ -15,10 +15,6 @@ struct GlassCard<Content: View>: View {
                     .fill(AppTheme.cardBackground)
                     .overlay(
                         RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
-                            .fill(AppTheme.cardGlassGradient)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
                             .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
                     )
             )
@@ -27,9 +23,10 @@ struct GlassCard<Content: View>: View {
 
 #Preview {
     GlassCard {
-        Text("Hello")
+        Text("NOTHING")
+            .font(AppTheme.cardTitle)
             .foregroundStyle(.white)
     }
     .padding()
-    .background(AppTheme.background)
+    .background(Color.black)
 }

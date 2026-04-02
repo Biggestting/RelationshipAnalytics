@@ -8,23 +8,23 @@ struct LongestConvoCard: View {
             GlassCard {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
-                        Text("Longest convo")
+                        Text("LONGEST CONVO")
                             .font(AppTheme.cardTitle)
                             .foregroundStyle(AppTheme.textPrimary)
                         Spacer()
                         HStack(spacing: 4) {
-                            Text("Jump")
+                            Text("JUMP")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                             Image(systemName: "chevron.right")
-                                .font(.system(size: 8, weight: .semibold))
+                                .font(.system(size: 8, weight: .medium))
                                 .foregroundStyle(AppTheme.textMuted)
                         }
                     }
 
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Messages")
+                            Text("MESSAGES")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                             Text("\(convo.messageCount)")
@@ -35,7 +35,7 @@ struct LongestConvoCard: View {
                         Spacer()
 
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Length")
+                            Text("LENGTH")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                             Text(convo.durationFormatted)
@@ -44,7 +44,7 @@ struct LongestConvoCard: View {
                         }
                     }
 
-                    Text(convo.dateRangeFormatted)
+                    Text(convo.dateRangeFormatted.uppercased())
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
@@ -56,5 +56,5 @@ struct LongestConvoCard: View {
 #Preview {
     LongestConvoCard(convo: MockDataProvider.messageStats.longestConvo)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

@@ -19,6 +19,7 @@
 		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
 		4FB7F536DB21623876599497 /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5FFF954A466568E403B6E /* MacContentView.swift */; };
 		53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F314ECB9199FFB80DD1DC /* GlassCard.swift */; };
+		532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325474B42653B4117114EB8 /* EditedUnsentCard.swift */; };
 		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
@@ -57,6 +58,7 @@
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
 		3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTimeCard.swift; sourceTree = "<group>"; };
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
+		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */,
 				99F8EF9644FAD5E60835221A /* CallTimeCard.swift */,
 				C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */,
+				5325474B42653B4117114EB8 /* EditedUnsentCard.swift */,
 				ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */,
 				0B4DA5F2B41378E912C05E57 /* HeaderView.swift */,
 				AB7340CD645540A8206811A2 /* LongestConvoCard.swift */,
@@ -351,6 +354,7 @@
 				6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */,
 				73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */,
 				E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */,
+				532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */,
 				F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */,
 				53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */,
 				9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */,

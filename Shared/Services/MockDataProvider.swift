@@ -41,7 +41,9 @@ enum MockDataProvider {
             date: dateFrom("2025-02-01"),
             isFromUser: true
         ),
-        firstMessageReceived: nil
+        firstMessageReceived: nil,
+        messagesEdited: 14,
+        messagesUnsent: 3
     )
 
     static let callStats = CallStats(

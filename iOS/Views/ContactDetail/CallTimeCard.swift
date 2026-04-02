@@ -7,31 +7,29 @@ struct CallTimeCard: View {
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                // Title
                 HStack {
-                    Text("Call time")
+                    Text("CALL TIME")
                         .font(AppTheme.cardTitle)
                         .foregroundStyle(AppTheme.textPrimary)
                     Spacer()
-                    Text("Last 12 months")
+                    Text("LAST 12 MONTHS")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
 
-                // Bar chart
                 Chart(callStats.monthlyCallData) { data in
                     BarMark(
                         x: .value("Month", data.month),
                         y: .value("Minutes", data.totalMinutes)
                     )
-                    .foregroundStyle(AppTheme.primaryPink)
-                    .cornerRadius(2)
+                    .foregroundStyle(Color.white.opacity(0.7))
+                    .cornerRadius(1)
                 }
                 .chartXAxis {
-                    AxisMarks(values: .automatic) { value in
+                    AxisMarks(values: .automatic) { _ in
                         AxisValueLabel()
                             .foregroundStyle(AppTheme.textMuted)
-                            .font(.system(size: 9))
+                            .font(.system(size: 8, design: .monospaced))
                     }
                 }
                 .chartYAxis {
@@ -42,18 +40,17 @@ struct CallTimeCard: View {
                 }
                 .frame(height: 80)
 
-                // Stats row
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 2) {
                         HStack(alignment: .firstTextBaseline, spacing: 4) {
                             Text(callStats.totalCallTimeFormatted)
                                 .font(AppTheme.mediumStat)
                                 .foregroundStyle(AppTheme.textPrimary)
-                            Text("total")
+                            Text("TOTAL")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                         }
-                        Text("\(callStats.answeredCalls) answered calls")
+                        Text("\(callStats.answeredCalls) ANSWERED CALLS")
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                     }
@@ -65,12 +62,12 @@ struct CallTimeCard: View {
                             Text(callStats.averageCallFormatted)
                                 .font(AppTheme.mediumStat)
                                 .foregroundStyle(AppTheme.textPrimary)
-                            Text("avg")
+                            Text("AVG")
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                         }
                         if let lastAnswered = callStats.lastAnsweredFormatted {
-                            Text(lastAnswered)
+                            Text(lastAnswered.uppercased())
                                 .font(AppTheme.caption)
                                 .foregroundStyle(AppTheme.textMuted)
                         }
@@ -84,5 +81,5 @@ struct CallTimeCard: View {
 #Preview {
     CallTimeCard(callStats: MockDataProvider.callStats)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

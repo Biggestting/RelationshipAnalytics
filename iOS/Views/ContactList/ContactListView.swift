@@ -5,7 +5,7 @@ struct ContactListView: View {
 
     var body: some View {
         ZStack {
-            AppTheme.background.ignoresSafeArea()
+            Color.black.ignoresSafeArea()
 
             ScrollView {
                 LazyVStack(spacing: 2) {
@@ -25,7 +25,7 @@ struct ContactListView: View {
                 .padding(.horizontal, 16)
             }
         }
-        .navigationTitle("Contacts")
+        .navigationTitle("CONTACTS")
         .navigationBarTitleDisplayMode(.large)
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
@@ -39,26 +39,24 @@ struct ContactRow: View {
             // Avatar
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [AppTheme.primaryPink.opacity(0.6), AppTheme.primaryPurple.opacity(0.4)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+                    .fill(Color(hex: "1A1A1A"))
+                    .frame(width: 44, height: 44)
+                    .overlay(
+                        Circle()
+                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
                     )
-                    .frame(width: 48, height: 48)
 
                 Text(contact.initials)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold, design: .monospaced))
                     .foregroundStyle(.white)
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(contact.name)
-                    .font(.system(size: 16, weight: .semibold))
+                Text(contact.name.uppercased())
+                    .font(.system(size: 14, weight: .semibold, design: .monospaced))
                     .foregroundStyle(AppTheme.textPrimary)
 
-                Text(contact.talkingSinceFormatted)
+                Text(contact.talkingSinceFormatted.uppercased())
                     .font(AppTheme.caption)
                     .foregroundStyle(AppTheme.textMuted)
             }
@@ -66,14 +64,18 @@ struct ContactRow: View {
             Spacer()
 
             Image(systemName: "chevron.right")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(AppTheme.textMuted)
         }
         .padding(.vertical, 12)
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 14)
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
                 .fill(AppTheme.cardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                        .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
+                )
         )
     }
 }

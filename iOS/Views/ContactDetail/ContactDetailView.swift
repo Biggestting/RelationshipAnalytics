@@ -20,6 +20,8 @@ struct ContactDetailView: View {
 
                     SentReceivedCard(stats: messageStats)
 
+                    EditedUnsentCard(stats: messageStats)
+
                     MessageActivityHeatmap(stats: messageStats)
 
                     // Side-by-side cards

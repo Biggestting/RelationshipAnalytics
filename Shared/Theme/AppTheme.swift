@@ -1,70 +1,38 @@
 import SwiftUI
 
 enum AppTheme {
-    // MARK: - Colors
-    static let background = Color(hex: "0D0D0D")
-    static let cardBackground = Color(hex: "1A1A2E").opacity(0.6)
-    static let cardBorder = Color.white.opacity(0.08)
+    // MARK: - Colors (Nothing: monochrome + single red accent)
+    static let background = Color.black
+    static let cardBackground = Color(hex: "0A0A0A")
+    static let cardBorder = Color.white.opacity(0.10)
 
-    static let primaryPink = Color(hex: "FF2D78")
-    static let primaryPurple = Color(hex: "8B5CF6")
-    static let primaryBlue = Color(hex: "3B82F6")
+    static let accentRed = Color(hex: "D32F2F")
 
     static let textPrimary = Color.white
-    static let textSecondary = Color(hex: "9CA3AF")
-    static let textMuted = Color(hex: "6B7280")
+    static let textSecondary = Color(hex: "8A8A8A")
+    static let textMuted = Color(hex: "555555")
 
-    static let streakRed = Color(hex: "EF4444")
-    static let successGreen = Color(hex: "22C55E")
-
-    // MARK: - Gradients
-    static let headerGradient = LinearGradient(
-        colors: [
-            Color(hex: "FF2D78").opacity(0.8),
-            Color(hex: "8B5CF6").opacity(0.6),
-            Color(hex: "3B82F6").opacity(0.4)
-        ],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-
-    static let cardGlassGradient = LinearGradient(
-        colors: [
-            Color.white.opacity(0.08),
-            Color.white.opacity(0.02)
-        ],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-
-    static let pinkBarGradient = LinearGradient(
-        colors: [Color(hex: "FF2D78"), Color(hex: "FF6B9D")],
-        startPoint: .leading,
-        endPoint: .trailing
-    )
-
-    // Heatmap intensity colors
+    // MARK: - Heatmap (white opacity scale)
     static let heatmapColors: [Color] = [
-        Color(hex: "1A1A2E"),       // 0 - empty
-        Color(hex: "FF2D78").opacity(0.3),  // 1 - low
-        Color(hex: "FF2D78").opacity(0.5),  // 2 - medium
-        Color(hex: "FF2D78").opacity(0.75), // 3 - high
-        Color(hex: "FF2D78"),               // 4 - max
+        Color(hex: "111111"),
+        Color.white.opacity(0.15),
+        Color.white.opacity(0.30),
+        Color.white.opacity(0.55),
+        Color.white.opacity(0.85),
     ]
 
-    // MARK: - Typography
-    static let largeStat = Font.system(size: 42, weight: .bold, design: .rounded)
-    static let mediumStat = Font.system(size: 28, weight: .bold, design: .rounded)
-    static let cardTitle = Font.system(size: 15, weight: .semibold)
-    static let cardSubtitle = Font.system(size: 13, weight: .regular)
-    static let bodyText = Font.system(size: 14, weight: .regular)
-    static let caption = Font.system(size: 12, weight: .regular)
-    static let monoStat = Font.system(size: 28, weight: .bold, design: .monospaced)
+    // MARK: - Typography (monospaced, industrial)
+    static let largeStat = Font.system(size: 40, weight: .bold, design: .monospaced)
+    static let mediumStat = Font.system(size: 26, weight: .bold, design: .monospaced)
+    static let cardTitle = Font.system(size: 13, weight: .medium, design: .monospaced)
+    static let cardSubtitle = Font.system(size: 12, weight: .regular, design: .monospaced)
+    static let bodyText = Font.system(size: 13, weight: .regular, design: .monospaced)
+    static let caption = Font.system(size: 11, weight: .regular, design: .monospaced)
 
-    // MARK: - Dimensions
-    static let cardCornerRadius: CGFloat = 16
-    static let cardPadding: CGFloat = 16
-    static let sectionSpacing: CGFloat = 12
+    // MARK: - Dimensions (sharp, industrial)
+    static let cardCornerRadius: CGFloat = 6
+    static let cardPadding: CGFloat = 14
+    static let sectionSpacing: CGFloat = 10
 }
 
 // MARK: - Color Hex Extension

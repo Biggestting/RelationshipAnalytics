@@ -7,37 +7,34 @@ struct ActiveStreakCard: View {
     var body: some View {
         GlassCard {
             VStack(spacing: 8) {
-                Text("Active streak")
+                Text("ACTIVE STREAK")
                     .font(AppTheme.cardTitle)
                     .foregroundStyle(AppTheme.textPrimary)
 
-                // Circular gauge
                 ZStack {
                     Circle()
                         .trim(from: 0, to: 1)
-                        .stroke(Color.white.opacity(0.1), style: StrokeStyle(lineWidth: 4, lineCap: .round, dash: [2, 4]))
-                        .frame(width: 70, height: 70)
+                        .stroke(Color.white.opacity(0.08), style: StrokeStyle(lineWidth: 3, lineCap: .butt, dash: [2, 4]))
+                        .frame(width: 66, height: 66)
 
                     if bestStreak > 0 {
                         Circle()
                             .trim(from: 0, to: CGFloat(streak) / CGFloat(bestStreak))
-                            .stroke(AppTheme.primaryPink, style: StrokeStyle(lineWidth: 4, lineCap: .round))
-                            .frame(width: 70, height: 70)
+                            .stroke(AppTheme.accentRed, style: StrokeStyle(lineWidth: 3, lineCap: .butt))
+                            .frame(width: 66, height: 66)
                             .rotationEffect(.degrees(-90))
                     }
 
-                    VStack(spacing: 0) {
-                        Text("\(streak)")
-                            .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .foregroundStyle(AppTheme.textPrimary)
-                    }
+                    Text("\(streak)")
+                        .font(AppTheme.mediumStat)
+                        .foregroundStyle(AppTheme.textPrimary)
                 }
 
-                Text("days")
+                Text("DAYS")
                     .font(AppTheme.caption)
-                    .foregroundStyle(AppTheme.streakRed)
+                    .foregroundStyle(AppTheme.accentRed)
 
-                Text("Best \(bestStreak)")
+                Text("BEST \(bestStreak)")
                     .font(AppTheme.caption)
                     .foregroundStyle(AppTheme.textMuted)
             }
@@ -49,5 +46,5 @@ struct ActiveStreakCard: View {
 #Preview {
     ActiveStreakCard(streak: 0, bestStreak: 4)
         .frame(width: 170)
-        .background(AppTheme.background)
+        .background(Color.black)
 }

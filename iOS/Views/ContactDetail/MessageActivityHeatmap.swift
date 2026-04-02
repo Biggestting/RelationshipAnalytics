@@ -3,35 +3,32 @@ import SwiftUI
 struct MessageActivityHeatmap: View {
     let stats: MessageStats
 
-    private let columns = 26  // ~6 months of weeks
-    private let rows = 7      // days of week
-    private let cellSize: CGFloat = 8
+    private let rows = 7
+    private let cellSize: CGFloat = 7
     private let cellSpacing: CGFloat = 3
 
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                // Title
                 HStack {
-                    Text("Message activity")
+                    Text("MESSAGE ACTIVITY")
                         .font(AppTheme.cardTitle)
                         .foregroundStyle(AppTheme.textPrimary)
                     Spacer()
                     HStack(spacing: 4) {
-                        Text("Since Sep '25")
+                        Text("SINCE SEP '25")
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                         Image(systemName: "chevron.right")
-                            .font(.system(size: 8, weight: .semibold))
+                            .font(.system(size: 8, weight: .medium))
                             .foregroundStyle(AppTheme.textMuted)
                     }
                 }
 
-                // Heatmap grid
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: Array(repeating: GridItem(.fixed(cellSize), spacing: cellSpacing), count: rows), spacing: cellSpacing) {
                         ForEach(Array(stats.messageActivity.enumerated()), id: \.offset) { _, activity in
-                            RoundedRectangle(cornerRadius: 2)
+                            Rectangle()
                                 .fill(AppTheme.heatmapColors[activity.intensity])
                                 .frame(width: cellSize, height: cellSize)
                         }
@@ -39,28 +36,26 @@ struct MessageActivityHeatmap: View {
                 }
                 .frame(height: CGFloat(rows) * (cellSize + cellSpacing))
 
-                // Footer
                 HStack {
-                    Text("\(stats.totalMessages) messages")
+                    Text("\(stats.totalMessages) MESSAGES")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textSecondary)
 
                     Spacer()
 
-                    // Legend
-                    HStack(spacing: 4) {
-                        Text("Less")
-                            .font(.system(size: 10))
+                    HStack(spacing: 3) {
+                        Text("LESS")
+                            .font(.system(size: 9, design: .monospaced))
                             .foregroundStyle(AppTheme.textMuted)
 
                         ForEach(0..<5) { level in
-                            RoundedRectangle(cornerRadius: 2)
+                            Rectangle()
                                 .fill(AppTheme.heatmapColors[level])
-                                .frame(width: 8, height: 8)
+                                .frame(width: 7, height: 7)
                         }
 
-                        Text("More")
-                            .font(.system(size: 10))
+                        Text("MORE")
+                            .font(.system(size: 9, design: .monospaced))
                             .foregroundStyle(AppTheme.textMuted)
                     }
                 }
@@ -72,5 +67,5 @@ struct MessageActivityHeatmap: View {
 #Preview {
     MessageActivityHeatmap(stats: MockDataProvider.messageStats)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

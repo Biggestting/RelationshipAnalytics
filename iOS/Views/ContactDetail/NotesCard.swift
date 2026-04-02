@@ -8,23 +8,23 @@ struct NotesCard: View {
         GlassCard {
             HStack {
                 Image(systemName: "note.text")
-                    .font(.system(size: 16))
+                    .font(.system(size: 14, design: .monospaced))
                     .foregroundStyle(AppTheme.textSecondary)
 
-                Text("Notes")
+                Text("NOTES")
                     .font(AppTheme.cardTitle)
                     .foregroundStyle(AppTheme.textPrimary)
 
                 Spacer()
 
                 if notes.isEmpty {
-                    Text("Add a note")
-                        .font(AppTheme.cardSubtitle)
+                    Text("ADD A NOTE")
+                        .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(AppTheme.textMuted)
             }
         }
@@ -37,5 +37,5 @@ struct NotesCard: View {
 #Preview {
     NotesCard(notes: [])
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }

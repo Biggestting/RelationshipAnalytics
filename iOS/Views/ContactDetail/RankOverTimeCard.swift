@@ -7,25 +7,23 @@ struct RankOverTimeCard: View {
     var body: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                // Title
                 HStack {
-                    Text("Rank over time")
+                    Text("RANK OVER TIME")
                         .font(AppTheme.cardTitle)
                         .foregroundStyle(AppTheme.textPrimary)
                     Spacer()
-                    Text("Last 12 months")
+                    Text("LAST 12 MONTHS")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
                 }
 
-                // Line chart (inverted Y axis — rank 1 is at top)
                 Chart(rankData.rankHistory) { point in
                     LineMark(
                         x: .value("Date", point.date),
                         y: .value("Rank", point.rank)
                     )
-                    .foregroundStyle(AppTheme.primaryPink)
-                    .lineStyle(StrokeStyle(lineWidth: 2))
+                    .foregroundStyle(Color.white)
+                    .lineStyle(StrokeStyle(lineWidth: 1.5))
 
                     AreaMark(
                         x: .value("Date", point.date),
@@ -33,7 +31,7 @@ struct RankOverTimeCard: View {
                     )
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [AppTheme.primaryPink.opacity(0.3), Color.clear],
+                            colors: [Color.white.opacity(0.12), Color.clear],
                             startPoint: .bottom,
                             endPoint: .top
                         )
@@ -45,7 +43,7 @@ struct RankOverTimeCard: View {
                         AxisValueLabel {
                             if let rank = value.as(Int.self) {
                                 Text("#\(rank)")
-                                    .font(.system(size: 9))
+                                    .font(.system(size: 8, design: .monospaced))
                                     .foregroundStyle(AppTheme.textMuted)
                             }
                         }
@@ -54,24 +52,23 @@ struct RankOverTimeCard: View {
                     }
                 }
                 .chartXAxis {
-                    AxisMarks(values: .stride(by: .month, count: 2)) { value in
+                    AxisMarks(values: .stride(by: .month, count: 2)) { _ in
                         AxisValueLabel(format: .dateTime.month(.abbreviated))
                             .foregroundStyle(AppTheme.textMuted)
-                            .font(.system(size: 9))
+                            .font(.system(size: 8, design: .monospaced))
                     }
                 }
                 .frame(height: 120)
 
-                // Stats row
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Current")
+                        Text("CURRENT")
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                         Text(rankData.currentRankFormatted)
                             .font(AppTheme.mediumStat)
                             .foregroundStyle(AppTheme.textPrimary)
-                        Text(rankData.currentDateFormatted)
+                        Text(rankData.currentDateFormatted.uppercased())
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                     }
@@ -79,13 +76,13 @@ struct RankOverTimeCard: View {
                     Spacer()
 
                     VStack(alignment: .trailing, spacing: 2) {
-                        Text("Best")
+                        Text("BEST")
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                         Text(rankData.bestRankFormatted)
                             .font(AppTheme.mediumStat)
                             .foregroundStyle(AppTheme.textPrimary)
-                        Text(rankData.bestDateFormatted)
+                        Text(rankData.bestDateFormatted.uppercased())
                             .font(AppTheme.caption)
                             .foregroundStyle(AppTheme.textMuted)
                     }
@@ -98,5 +95,5 @@ struct RankOverTimeCard: View {
 #Preview {
     RankOverTimeCard(rankData: MockDataProvider.rankData)
         .padding()
-        .background(AppTheme.background)
+        .background(Color.black)
 }
