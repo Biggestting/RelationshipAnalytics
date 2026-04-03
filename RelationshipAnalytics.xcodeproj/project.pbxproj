@@ -15,6 +15,7 @@
 		196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
 		1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */; };
 		218DCB47C4F3B3B8E54743BE /* ShortcutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91601EFAF79BFAC6348938F3 /* ShortcutBuilder.swift */; };
+		227E6479E0E61892A5429B64 /* AutoSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393E363442B08FFEF24E965 /* AutoSyncManager.swift */; };
 		28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DA5F2B41378E912C05E57 /* HeaderView.swift */; };
 		29B627F06DFCAD1D6EDC05D2 /* ImportMessagesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC29F71446D35E5EFB0E8A /* ImportMessagesIntent.swift */; };
 		2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
@@ -89,6 +90,7 @@
 		0B4DA5F2B41378E912C05E57 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualInsightsCard.swift; sourceTree = "<group>"; };
 		10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogCard.swift; sourceTree = "<group>"; };
+		1393E363442B08FFEF24E965 /* AutoSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSyncManager.swift; sourceTree = "<group>"; };
 		15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatsCard.swift; sourceTree = "<group>"; };
 		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
 		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +371,7 @@
 		E6C372A633C4B26FBFDCDA6C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1393E363442B08FFEF24E965 /* AutoSyncManager.swift */,
 				B8F0356D6919862D7CFC4A77 /* CallTracker.swift */,
 				8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */,
 				59963A65BD7C3B18B4014303 /* MessageTracker.swift */,
@@ -477,6 +480,7 @@
 				3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */,
 				66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */,
 				8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */,
+				227E6479E0E61892A5429B64 /* AutoSyncManager.swift in Sources */,
 				6A53EFAA8BE7BD92E1775D09 /* CallLogCard.swift in Sources */,
 				F17FCC8FC12E0A103527AE9B /* CallPatternsCard.swift in Sources */,
 				CA0542E027362DC747973274 /* CallStats.swift in Sources */,

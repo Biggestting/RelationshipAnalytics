@@ -3,6 +3,7 @@ import SwiftUI
 struct DataSourcesView: View {
     @StateObject private var callTracker = CallTracker.shared
     @StateObject private var messageTracker = MessageTracker.shared
+    @StateObject private var syncManager = AutoSyncManager.shared
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -12,6 +13,132 @@ struct DataSourcesView: View {
 
                 ScrollView {
                     VStack(spacing: 16) {
+                        // Auto-sync status
+                        GlassCard {
+                            VStack(alignment: .leading, spacing: 10) {
+                                HStack {
+                                    Text("AUTO SYNC")
+                                        .font(AppTheme.cardTitle)
+                                        .foregroundStyle(AppTheme.textPrimary)
+                                    Spacer()
+                                    Button {
+                                        syncManager.autoSyncEnabled.toggle()
+                                    } label: {
+                                        Text(syncManager.autoSyncEnabled ? "ON" : "OFF")
+                                            .font(.system(size: 10, weight: .bold, design: .monospaced))
+                                            .foregroundStyle(syncManager.autoSyncEnabled ? AppTheme.textPrimary : AppTheme.textMuted)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 5)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 4)
+                                                    .fill(syncManager.autoSyncEnabled ? AppTheme.accentRed.opacity(0.2) : Color.clear)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 4)
+                                                            .strokeBorder(syncManager.autoSyncEnabled ? AppTheme.accentRed.opacity(0.4) : AppTheme.cardBorder, lineWidth: 1)
+                                                    )
+                                            )
+                                    }
+                                }
+
+                                HStack(spacing: 16) {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("LAST SYNC")
+                                            .font(.system(size: 8, design: .monospaced))
+                                            .foregroundStyle(AppTheme.textMuted)
+                                        Text(syncManager.formattedSyncDate)
+                                            .font(.system(size: 12, weight: .bold, design: .monospaced))
+                                            .foregroundStyle(syncManager.isStale ? AppTheme.accentRed : AppTheme.textPrimary)
+                                    }
+
+                                    if syncManager.isSyncing {
+                                        ProgressView()
+                                            .tint(AppTheme.textMuted)
+                                    }
+
+                                    Spacer()
+
+                                    Button {
+                                        Task { await syncManager.performSync(source: "manual") }
+                                    } label: {
+                                        Text("SYNC NOW")
+                                            .font(.system(size: 10, weight: .medium, design: .monospaced))
+                                            .foregroundStyle(AppTheme.textSecondary)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 6)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 4)
+                                                    .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
+                                            )
+                                    }
+                                    .disabled(syncManager.isSyncing)
+                                }
+
+                                if !syncManager.syncStatus.isEmpty {
+                                    Text(syncManager.syncStatus)
+                                        .font(.system(size: 9, design: .monospaced))
+                                        .foregroundStyle(AppTheme.textMuted)
+                                }
+
+                                Text("SYNCS AUTOMATICALLY EVERY FEW HOURS VIA BACKGROUND REFRESH. ALSO SYNCS WHEN YOU OPEN THE APP IF DATA IS OLDER THAN 4 HOURS.")
+                                    .font(.system(size: 8, design: .monospaced))
+                                    .foregroundStyle(AppTheme.textMuted)
+                                    .lineSpacing(2)
+                            }
+                        }
+
+                        // Shortcuts automation guide
+                        GlassCard {
+                            VStack(alignment: .leading, spacing: 10) {
+                                HStack {
+                                    Image(systemName: "bolt.fill")
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(AppTheme.accentRed)
+                                    Text("INSTANT SYNC (RECOMMENDED)")
+                                        .font(AppTheme.cardTitle)
+                                        .foregroundStyle(AppTheme.textPrimary)
+                                }
+
+                                Text("SET UP A SHORTCUTS AUTOMATION SO YOUR DATA SYNCS EVERY TIME YOU OPEN THE MESSAGES APP. ONE-TIME SETUP, FULLY AUTOMATIC AFTER.")
+                                    .font(.system(size: 10, design: .monospaced))
+                                    .foregroundStyle(AppTheme.textMuted)
+                                    .lineSpacing(3)
+
+                                Rectangle().fill(AppTheme.divider).frame(height: 1)
+
+                                VStack(alignment: .leading, spacing: 6) {
+                                    AutomationStep(number: 1, text: "OPEN SHORTCUTS APP → AUTOMATION TAB")
+                                    AutomationStep(number: 2, text: "TAP + → PERSONAL AUTOMATION")
+                                    AutomationStep(number: 3, text: "CHOOSE 'APP' → SELECT 'MESSAGES' → 'IS OPENED'")
+                                    AutomationStep(number: 4, text: "ADD ACTION → SEARCH 'RELATIONSHIP ANALYTICS'")
+                                    AutomationStep(number: 5, text: "SELECT 'IMPORT MESSAGES' ACTION")
+                                    AutomationStep(number: 6, text: "TURN OFF 'ASK BEFORE RUNNING' → DONE")
+                                }
+
+                                Button {
+                                    if let url = URL(string: "shortcuts://create-automation") {
+                                        UIApplication.shared.open(url)
+                                    }
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "bolt.badge.clock")
+                                        Text("OPEN AUTOMATIONS")
+                                    }
+                                    .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                                    .foregroundStyle(AppTheme.textPrimary)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                            .fill(AppTheme.accentRed.opacity(0.1))
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                                    .strokeBorder(AppTheme.accentRed.opacity(0.3), lineWidth: 1)
+                                            )
+                                    )
+                                }
+                            }
+                        }
+
                         // Tracking status
                         GlassCard {
                             VStack(alignment: .leading, spacing: 10) {
@@ -298,6 +425,24 @@ struct TrackingRow: View {
                             )
                     )
             }
+        }
+    }
+}
+
+struct AutomationStep: View {
+    let number: Int
+    let text: String
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text("\(number)")
+                .font(.system(size: 10, weight: .bold, design: .monospaced))
+                .foregroundStyle(AppTheme.accentRed)
+                .frame(width: 16, alignment: .trailing)
+            Text(text)
+                .font(.system(size: 10, design: .monospaced))
+                .foregroundStyle(AppTheme.textSecondary)
+                .lineSpacing(2)
         }
     }
 }

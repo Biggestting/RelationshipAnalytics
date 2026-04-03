@@ -36,6 +36,8 @@ targets:
         CFBundleURLTypes:
           - CFBundleURLSchemes: [ra, relationshipanalytics]
             CFBundleURLName: "com.relationshipanalytics.ios"
+        BGTaskSchedulerPermittedIdentifiers:
+          - "com.relationshipanalytics.refresh"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.ios

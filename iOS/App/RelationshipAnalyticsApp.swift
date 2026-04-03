@@ -3,11 +3,12 @@ import SwiftUI
 @main
 struct RelationshipAnalyticsApp: App {
     @StateObject private var appearanceManager = AppearanceManager()
+    @Environment(\.scenePhase) private var scenePhase
 
     init() {
-        // Start live tracking on launch
         CallTracker.shared.startTracking()
         MessageTracker.shared.startTracking()
+        AutoSyncManager.shared.registerBackgroundTask()
     }
 
     var body: some Scene {
@@ -16,9 +17,13 @@ struct RelationshipAnalyticsApp: App {
                 .environmentObject(appearanceManager)
                 .preferredColorScheme(appearanceManager.mode.colorScheme)
                 .onOpenURL { url in
-                    // Handle ra://import?data=... from Shortcuts
                     _ = ShortcutsIntegration.shared.handleURL(url)
                 }
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                AutoSyncManager.shared.syncIfNeeded()
+            }
         }
     }
 }
