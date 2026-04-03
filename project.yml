@@ -29,13 +29,16 @@ targets:
       - path: iOS/Resources/Assets.xcassets
     info:
       path: iOS/Info.plist
+      properties:
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSPhotoLibraryUsageDescription: "Access your photos to find pictures with this contact"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.ios
         TARGETED_DEVICE_FAMILY: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ENABLE_PREVIEWS: YES
-        GENERATE_INFOPLIST_FILE: NO
 
   # macOS App
   RelationshipAnalytics-macOS:
@@ -51,12 +54,13 @@ targets:
       - path: macOS/Resources/Assets.xcassets
     info:
       path: macOS/Info.plist
+      properties:
+        LSUIElement: false
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.macos
         CODE_SIGN_ENTITLEMENTS: macOS/RelationshipAnalytics.entitlements
         ENABLE_PREVIEWS: YES
-        GENERATE_INFOPLIST_FILE: NO
 
 schemes:
   RelationshipAnalytics-iOS:

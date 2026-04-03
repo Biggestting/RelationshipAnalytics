@@ -16,7 +16,7 @@ struct ContactDetailView: View {
                 VStack(spacing: AppTheme.sectionSpacing) {
                     HeaderView(contact: contact)
 
-                    NotesCard(notes: [])
+                    NotesCard(notes: [], contactId: contact.id)
 
                     SentReceivedCard(stats: messageStats)
 
@@ -50,6 +50,8 @@ struct ContactDetailView: View {
 
                     RankOverTimeCard(rankData: rankData)
 
+                    PhotosTogetherCard(contactName: contact.name)
+
                     LongestConvoCard(convo: messageStats.longestConvo)
 
                     FirstMessagesCard(firstMessage: messageStats.firstMessageSent)
@@ -60,6 +62,7 @@ struct ContactDetailView: View {
                 .padding(.horizontal, 16)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

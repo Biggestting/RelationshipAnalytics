@@ -24,6 +24,7 @@
 		532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325474B42653B4117114EB8 /* EditedUnsentCard.swift */; };
 		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		617BA19DEAE0078D655BD082 /* FaceTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85FA6A27A191F06922908B /* FaceTimeCard.swift */; };
+		64B4154F439082FD5E309989 /* PhotosTogetherCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */; };
 		66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		6A53EFAA8BE7BD92E1775D09 /* CallLogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */; };
 		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
@@ -31,6 +32,7 @@
 		71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */; };
 		73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
 		7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */; };
+		8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */; };
 		8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */; };
 		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
@@ -87,7 +89,9 @@
 		C5082C202F0B148267454573 /* MockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataProvider.swift; sourceTree = "<group>"; };
 		C84F89D8100E35B4B029FDC6 /* MessageStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStats.swift; sourceTree = "<group>"; };
 		CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
+		CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTogetherCard.swift; sourceTree = "<group>"; };
 		D32CD8D0B4402A8EE0B07E91 /* CallPatternsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPatternsCard.swift; sourceTree = "<group>"; };
+		D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		D61F314ECB9199FFB80DD1DC /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActivityHeatmap.swift; sourceTree = "<group>"; };
 		E81825180D2635DAF76A7CA1 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */,
 				34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */,
 				49769C57E302C878CA2D9504 /* NotesCard.swift */,
+				CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */,
 				1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */,
 				3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */,
 				C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */,
@@ -257,6 +262,7 @@
 		D1DB82F81335EB818463AB51 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */,
 				684E431D3F03099B3886B67E /* ContentView.swift */,
 				259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */,
 			);
@@ -361,6 +367,7 @@
 			files = (
 				3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */,
 				66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */,
+				8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */,
 				6A53EFAA8BE7BD92E1775D09 /* CallLogCard.swift in Sources */,
 				F17FCC8FC12E0A103527AE9B /* CallPatternsCard.swift in Sources */,
 				CA0542E027362DC747973274 /* CallStats.swift in Sources */,
@@ -383,6 +390,7 @@
 				2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */,
 				F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */,
 				AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */,
+				64B4154F439082FD5E309989 /* PhotosTogetherCard.swift in Sources */,
 				BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */,
 				71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */,
 				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
@@ -424,7 +432,6 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,7 +448,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,7 +465,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -599,7 +604,6 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -2,10 +2,12 @@ import SwiftUI
 
 struct ContactListView: View {
     let contacts: [ContactProfile]
+    @EnvironmentObject var appearanceManager: AppearanceManager
+    @State private var showAppearancePicker = false
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            AppTheme.background.ignoresSafeArea()
 
             ScrollView {
                 LazyVStack(spacing: 2) {
@@ -27,7 +29,87 @@ struct ContactListView: View {
         }
         .navigationTitle("CONTACTS")
         .navigationBarTitleDisplayMode(.large)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showAppearancePicker = true
+                } label: {
+                    Image(systemName: appearanceIcon)
+                        .font(.system(size: 16))
+                        .foregroundStyle(AppTheme.textPrimary)
+                }
+            }
+        }
+        .sheet(isPresented: $showAppearancePicker) {
+            AppearancePickerSheet(manager: appearanceManager, isPresented: $showAppearancePicker)
+                .presentationDetents([.height(220)])
+        }
+    }
+
+    private var appearanceIcon: String {
+        switch appearanceManager.mode {
+        case .system: return "circle.lefthalf.filled"
+        case .dark: return "moon.fill"
+        case .light: return "sun.max.fill"
+        }
+    }
+}
+
+struct AppearancePickerSheet: View {
+    @ObservedObject var manager: AppearanceManager
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("APPEARANCE")
+                .font(AppTheme.cardTitle)
+                .foregroundStyle(AppTheme.textPrimary)
+                .padding(.top, 20)
+
+            HStack(spacing: 12) {
+                ForEach(AppearanceMode.allCases, id: \.rawValue) { mode in
+                    Button {
+                        manager.mode = mode
+                        isPresented = false
+                    } label: {
+                        VStack(spacing: 8) {
+                            Image(systemName: iconFor(mode))
+                                .font(.system(size: 24))
+                                .foregroundStyle(manager.mode == mode ? AppTheme.accentRed : AppTheme.textSecondary)
+
+                            Text(mode.rawValue)
+                                .font(AppTheme.caption)
+                                .foregroundStyle(manager.mode == mode ? AppTheme.textPrimary : AppTheme.textMuted)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(
+                            RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                .fill(AppTheme.cardBackground)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                        .strokeBorder(
+                                            manager.mode == mode ? AppTheme.accentRed.opacity(0.5) : AppTheme.cardBorder,
+                                            lineWidth: 1
+                                        )
+                                )
+                        )
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+
+            Spacer()
+        }
+        .background(AppTheme.background.ignoresSafeArea())
+    }
+
+    private func iconFor(_ mode: AppearanceMode) -> String {
+        switch mode {
+        case .system: return "circle.lefthalf.filled"
+        case .dark: return "moon.fill"
+        case .light: return "sun.max.fill"
+        }
     }
 }
 
@@ -36,19 +118,18 @@ struct ContactRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            // Avatar
             ZStack {
                 Circle()
-                    .fill(Color(hex: "1A1A1A"))
+                    .fill(AppTheme.cardBackground)
                     .frame(width: 44, height: 44)
                     .overlay(
                         Circle()
-                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                            .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
                     )
 
                 Text(contact.initials)
                     .font(.system(size: 16, weight: .semibold, design: .monospaced))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppTheme.textPrimary)
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -83,6 +164,6 @@ struct ContactRow: View {
 #Preview {
     NavigationStack {
         ContactListView(contacts: MockDataProvider.contacts)
+            .environmentObject(AppearanceManager())
     }
-    .preferredColorScheme(.dark)
 }

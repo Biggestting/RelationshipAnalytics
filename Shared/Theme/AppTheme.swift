@@ -1,18 +1,43 @@
 import SwiftUI
 
 enum AppTheme {
-    // MARK: - Colors (Nothing: monochrome + single red accent)
-    static let background = Color.black
-    static let cardBackground = Color(hex: "0A0A0A")
-    static let cardBorder = Color.white.opacity(0.10)
+    // MARK: - Adaptive Colors (Nothing: monochrome + single red accent)
+
+    static let background = Color("background", bundle: nil)
+    static let cardBackground = Color("cardBackground", bundle: nil)
+    static let cardBorder = Color("cardBorder", bundle: nil)
 
     static let accentRed = Color(hex: "D32F2F")
 
-    static let textPrimary = Color.white
-    static let textSecondary = Color(hex: "8A8A8A")
-    static let textMuted = Color(hex: "555555")
+    static let textPrimary = Color("textPrimary", bundle: nil)
+    static let textSecondary = Color("textSecondary", bundle: nil)
+    static let textMuted = Color("textMuted", bundle: nil)
 
-    // MARK: - Heatmap (white opacity scale)
+    // Fallback non-adaptive colors for contexts where color assets aren't loaded
+    static let backgroundDark = Color.black
+    static let backgroundLight = Color(hex: "F2F2F2")
+
+    // MARK: - Heatmap (adapts to theme)
+    static func heatmapColors(for scheme: ColorScheme) -> [Color] {
+        if scheme == .light {
+            return [
+                Color(hex: "E8E8E8"),
+                Color.black.opacity(0.12),
+                Color.black.opacity(0.25),
+                Color.black.opacity(0.45),
+                Color.black.opacity(0.75),
+            ]
+        }
+        return [
+            Color(hex: "111111"),
+            Color.white.opacity(0.15),
+            Color.white.opacity(0.30),
+            Color.white.opacity(0.55),
+            Color.white.opacity(0.85),
+        ]
+    }
+
+    // Static dark heatmap for views that don't have access to colorScheme
     static let heatmapColors: [Color] = [
         Color(hex: "111111"),
         Color.white.opacity(0.15),
