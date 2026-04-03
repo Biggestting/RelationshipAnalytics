@@ -2,42 +2,45 @@ import SwiftUI
 
 enum AppTheme {
     // MARK: - Adaptive Colors (Nothing: monochrome + single red accent)
+    // Uses UIColor/NSColor for reliable dark/light switching
 
-    static let background = Color("background", bundle: nil)
-    static let cardBackground = Color("cardBackground", bundle: nil)
-    static let cardBorder = Color("cardBorder", bundle: nil)
+    #if canImport(UIKit)
+    static let background = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor.black : UIColor(red: 0.949, green: 0.949, blue: 0.949, alpha: 1)
+    })
+
+    static let cardBackground = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor(red: 0.039, green: 0.039, blue: 0.039, alpha: 1) : UIColor.white
+    })
+
+    static let cardBorder = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor.white.withAlphaComponent(0.10) : UIColor.black.withAlphaComponent(0.10)
+    })
+
+    static let textPrimary = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor.white : UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 1)
+    })
+
+    static let textSecondary = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor(white: 0.541, alpha: 1) : UIColor(white: 0.400, alpha: 1)
+    })
+
+    static let textMuted = Color(UIColor { traits in
+        traits.userInterfaceStyle == .dark ? UIColor(white: 0.333, alpha: 1) : UIColor(white: 0.600, alpha: 1)
+    })
+    #else
+    // macOS fallback — always dark
+    static let background = Color.black
+    static let cardBackground = Color(hex: "0A0A0A")
+    static let cardBorder = Color.white.opacity(0.10)
+    static let textPrimary = Color.white
+    static let textSecondary = Color(hex: "8A8A8A")
+    static let textMuted = Color(hex: "555555")
+    #endif
 
     static let accentRed = Color(hex: "D32F2F")
 
-    static let textPrimary = Color("textPrimary", bundle: nil)
-    static let textSecondary = Color("textSecondary", bundle: nil)
-    static let textMuted = Color("textMuted", bundle: nil)
-
-    // Fallback non-adaptive colors for contexts where color assets aren't loaded
-    static let backgroundDark = Color.black
-    static let backgroundLight = Color(hex: "F2F2F2")
-
-    // MARK: - Heatmap (adapts to theme)
-    static func heatmapColors(for scheme: ColorScheme) -> [Color] {
-        if scheme == .light {
-            return [
-                Color(hex: "E8E8E8"),
-                Color.black.opacity(0.12),
-                Color.black.opacity(0.25),
-                Color.black.opacity(0.45),
-                Color.black.opacity(0.75),
-            ]
-        }
-        return [
-            Color(hex: "111111"),
-            Color.white.opacity(0.15),
-            Color.white.opacity(0.30),
-            Color.white.opacity(0.55),
-            Color.white.opacity(0.85),
-        ]
-    }
-
-    // Static dark heatmap for views that don't have access to colorScheme
+    // MARK: - Heatmap
     static let heatmapColors: [Color] = [
         Color(hex: "111111"),
         Color.white.opacity(0.15),
