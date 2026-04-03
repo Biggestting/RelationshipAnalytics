@@ -27,15 +27,15 @@ struct FirstMessagesCard: View {
 
                         Text(message.text)
                             .font(AppTheme.bodyText)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(AppTheme.textPrimary)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
                             .background(
                                 RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
-                                    .fill(Color(hex: "1A1A1A"))
+                                    .fill(AppTheme.bubbleBackground)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
-                                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                                            .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
                                     )
                             )
 
@@ -50,5 +50,5 @@ struct FirstMessagesCard: View {
 #Preview {
     FirstMessagesCard(firstMessage: MockDataProvider.messageStats.firstMessageSent)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }

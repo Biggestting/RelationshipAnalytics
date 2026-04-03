@@ -24,7 +24,6 @@ struct ContactDetailView: View {
 
                     MessageActivityHeatmap(stats: messageStats)
 
-                    // Side-by-side cards
                     HStack(spacing: AppTheme.sectionSpacing) {
                         ActiveStreakCard(
                             streak: messageStats.activeStreak,
@@ -56,7 +55,6 @@ struct ContactDetailView: View {
 
                     FirstMessagesCard(firstMessage: messageStats.firstMessageSent)
 
-                    // Bottom spacer for safe area
                     Color.clear.frame(height: 40)
                 }
                 .padding(.horizontal, 16)
@@ -71,26 +69,24 @@ struct ContactDetailView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(AppTheme.textPrimary)
                 }
             }
 
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 16) {
                     Button {
-                        // Search action
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 16))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(AppTheme.textPrimary)
                     }
 
                     Button {
-                        // More options
                     } label: {
                         Image(systemName: "ellipsis")
                             .font(.system(size: 16))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(AppTheme.textPrimary)
                     }
                 }
             }

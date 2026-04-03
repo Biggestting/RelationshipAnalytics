@@ -11,7 +11,6 @@ struct EditedUnsentCard: View {
                     .foregroundStyle(AppTheme.textPrimary)
 
                 HStack(spacing: 0) {
-                    // Edited
                     VStack(spacing: 6) {
                         Text("EDITED")
                             .font(AppTheme.caption)
@@ -27,12 +26,10 @@ struct EditedUnsentCard: View {
                     }
                     .frame(maxWidth: .infinity)
 
-                    // Divider
                     Rectangle()
-                        .fill(Color.white.opacity(0.10))
+                        .fill(AppTheme.cardBorder)
                         .frame(width: 1, height: 60)
 
-                    // Unsent
                     VStack(spacing: 6) {
                         Text("UNSENT")
                             .font(AppTheme.caption)
@@ -61,5 +58,5 @@ struct EditedUnsentCard: View {
 #Preview {
     EditedUnsentCard(stats: MockDataProvider.messageStats)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }

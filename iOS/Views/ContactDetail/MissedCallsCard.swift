@@ -11,27 +11,15 @@ struct MissedCallsCard: View {
                     .font(AppTheme.cardTitle)
                     .foregroundStyle(AppTheme.textPrimary)
 
-                // Answer rate bars
                 VStack(spacing: 10) {
-                    AnswerRateRow(
-                        label: "YOU",
-                        rate: stats.yourAnswerRate,
-                        missed: stats.youMissed
-                    )
-
-                    AnswerRateRow(
-                        label: contactName.uppercased(),
-                        rate: stats.theirAnswerRate,
-                        missed: stats.theyMissed
-                    )
+                    AnswerRateRow(label: "YOU", rate: stats.yourAnswerRate, missed: stats.youMissed)
+                    AnswerRateRow(label: contactName.uppercased(), rate: stats.theirAnswerRate, missed: stats.theyMissed)
                 }
 
-                // Divider
                 Rectangle()
-                    .fill(Color.white.opacity(0.06))
+                    .fill(AppTheme.divider)
                     .frame(height: 1)
 
-                // Stats row
                 HStack(spacing: 0) {
                     VStack(spacing: 4) {
                         Text("\(stats.totalAnswered)")
@@ -44,7 +32,7 @@ struct MissedCallsCard: View {
                     .frame(maxWidth: .infinity)
 
                     Rectangle()
-                        .fill(Color.white.opacity(0.10))
+                        .fill(AppTheme.cardBorder)
                         .frame(width: 1, height: 36)
 
                     VStack(spacing: 4) {
@@ -58,7 +46,7 @@ struct MissedCallsCard: View {
                     .frame(maxWidth: .infinity)
 
                     Rectangle()
-                        .fill(Color.white.opacity(0.10))
+                        .fill(AppTheme.cardBorder)
                         .frame(width: 1, height: 36)
 
                     VStack(spacing: 4) {
@@ -97,7 +85,7 @@ struct AnswerRateRow: View {
                 let answeredWidth = geometry.size.width * (rate / 100)
                 HStack(spacing: 1) {
                     RoundedRectangle(cornerRadius: 1)
-                        .fill(Color.white.opacity(0.7))
+                        .fill(AppTheme.barFill)
                         .frame(width: answeredWidth)
 
                     if rate < 100 {
@@ -112,10 +100,7 @@ struct AnswerRateRow: View {
 }
 
 #Preview {
-    MissedCallsCard(
-        stats: MockDataProvider.callStats.missedStats,
-        contactName: "Nina"
-    )
-    .padding()
-    .background(Color.black)
+    MissedCallsCard(stats: MockDataProvider.callStats.missedStats, contactName: "Nina")
+        .padding()
+        .background(AppTheme.background)
 }

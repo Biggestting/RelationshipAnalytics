@@ -73,7 +73,7 @@ struct NoteEditorSheet: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                AppTheme.background.ignoresSafeArea()
 
                 VStack(spacing: 16) {
                     TextEditor(text: $noteText)

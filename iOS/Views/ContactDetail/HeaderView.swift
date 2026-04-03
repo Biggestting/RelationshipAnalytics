@@ -5,14 +5,13 @@ struct HeaderView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            // Avatar
             ZStack {
                 Circle()
-                    .fill(Color(hex: "1A1A1A"))
+                    .fill(AppTheme.cardBackground)
                     .frame(width: 64, height: 64)
                     .overlay(
                         Circle()
-                            .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                            .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
                     )
 
                 Text(contact.initials)
@@ -20,17 +19,14 @@ struct HeaderView: View {
                     .foregroundStyle(AppTheme.textPrimary)
             }
 
-            // Name
             Text(contact.name.uppercased())
                 .font(.system(size: 22, weight: .bold, design: .monospaced))
                 .foregroundStyle(AppTheme.textPrimary)
 
-            // Talking since
             Text(contact.talkingSinceFormatted.uppercased())
                 .font(AppTheme.cardSubtitle)
                 .foregroundStyle(AppTheme.textSecondary)
 
-            // Duration badge
             Text(contact.talkingDuration.uppercased())
                 .font(AppTheme.caption)
                 .foregroundStyle(AppTheme.textSecondary)
@@ -38,7 +34,7 @@ struct HeaderView: View {
                 .padding(.vertical, 4)
                 .background(
                     RoundedRectangle(cornerRadius: 4)
-                        .strokeBorder(Color.white.opacity(0.10), lineWidth: 1)
+                        .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
                 )
         }
         .frame(maxWidth: .infinity)
@@ -49,5 +45,5 @@ struct HeaderView: View {
 
 #Preview {
     HeaderView(contact: MockDataProvider.contact)
-        .background(Color.black)
+        .background(AppTheme.background)
 }

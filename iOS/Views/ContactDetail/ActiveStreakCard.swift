@@ -14,7 +14,7 @@ struct ActiveStreakCard: View {
                 ZStack {
                     Circle()
                         .trim(from: 0, to: 1)
-                        .stroke(Color.white.opacity(0.08), style: StrokeStyle(lineWidth: 3, lineCap: .butt, dash: [2, 4]))
+                        .stroke(AppTheme.gaugeTrack, style: StrokeStyle(lineWidth: 3, lineCap: .butt, dash: [2, 4]))
                         .frame(width: 66, height: 66)
 
                     if bestStreak > 0 {
@@ -46,5 +46,5 @@ struct ActiveStreakCard: View {
 #Preview {
     ActiveStreakCard(streak: 0, bestStreak: 4)
         .frame(width: 170)
-        .background(Color.black)
+        .background(AppTheme.background)
 }

@@ -22,7 +22,7 @@ struct RankOverTimeCard: View {
                         x: .value("Date", point.date),
                         y: .value("Rank", point.rank)
                     )
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(AppTheme.textPrimary)
                     .lineStyle(StrokeStyle(lineWidth: 1.5))
 
                     AreaMark(
@@ -31,7 +31,7 @@ struct RankOverTimeCard: View {
                     )
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [Color.white.opacity(0.12), Color.clear],
+                            colors: [AppTheme.chartAreaFill, Color.clear],
                             startPoint: .bottom,
                             endPoint: .top
                         )
@@ -48,7 +48,7 @@ struct RankOverTimeCard: View {
                             }
                         }
                         AxisGridLine()
-                            .foregroundStyle(Color.white.opacity(0.05))
+                            .foregroundStyle(AppTheme.gridLine)
                     }
                 }
                 .chartXAxis {
@@ -95,5 +95,5 @@ struct RankOverTimeCard: View {
 #Preview {
     RankOverTimeCard(rankData: MockDataProvider.rankData)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }

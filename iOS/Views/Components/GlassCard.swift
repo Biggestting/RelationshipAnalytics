@@ -25,8 +25,8 @@ struct GlassCard<Content: View>: View {
     GlassCard {
         Text("NOTHING")
             .font(AppTheme.cardTitle)
-            .foregroundStyle(.white)
+            .foregroundStyle(AppTheme.textPrimary)
     }
     .padding()
-    .background(Color.black)
+    .background(AppTheme.background)
 }

@@ -22,7 +22,7 @@ struct CallTimeCard: View {
                         x: .value("Month", data.month),
                         y: .value("Minutes", data.totalMinutes)
                     )
-                    .foregroundStyle(Color.white.opacity(0.7))
+                    .foregroundStyle(AppTheme.barFill)
                     .cornerRadius(1)
                 }
                 .chartXAxis {
@@ -35,7 +35,7 @@ struct CallTimeCard: View {
                 .chartYAxis {
                     AxisMarks { _ in
                         AxisGridLine()
-                            .foregroundStyle(Color.white.opacity(0.05))
+                            .foregroundStyle(AppTheme.gridLine)
                     }
                 }
                 .frame(height: 80)
@@ -81,5 +81,5 @@ struct CallTimeCard: View {
 #Preview {
     CallTimeCard(callStats: MockDataProvider.callStats)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }

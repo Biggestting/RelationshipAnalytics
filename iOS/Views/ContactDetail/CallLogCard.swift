@@ -26,7 +26,7 @@ struct CallLogCard: View {
                     ForEach(Array(displayedRecords.enumerated()), id: \.element.id) { index, record in
                         if index > 0 {
                             Rectangle()
-                                .fill(Color.white.opacity(0.04))
+                                .fill(AppTheme.divider)
                                 .frame(height: 1)
                         }
 

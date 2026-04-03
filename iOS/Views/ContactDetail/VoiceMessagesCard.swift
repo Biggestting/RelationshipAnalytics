@@ -7,7 +7,6 @@ struct VoiceMessagesCard: View {
         if let stats {
             GlassCard {
                 VStack(alignment: .leading, spacing: 12) {
-                    // Title + Jump
                     HStack {
                         Image(systemName: "waveform")
                             .font(.system(size: 12, design: .monospaced))
@@ -33,7 +32,6 @@ struct VoiceMessagesCard: View {
                         }
                     }
 
-                    // Sent / Received row
                     HStack(spacing: 0) {
                         VStack(spacing: 4) {
                             Text("\(stats.sentCount)")
@@ -46,7 +44,7 @@ struct VoiceMessagesCard: View {
                         .frame(maxWidth: .infinity)
 
                         Rectangle()
-                            .fill(Color.white.opacity(0.10))
+                            .fill(AppTheme.cardBorder)
                             .frame(width: 1, height: 44)
 
                         VStack(spacing: 4) {
@@ -60,12 +58,10 @@ struct VoiceMessagesCard: View {
                         .frame(maxWidth: .infinity)
                     }
 
-                    // Divider
                     Rectangle()
-                        .fill(Color.white.opacity(0.06))
+                        .fill(AppTheme.divider)
                         .frame(height: 1)
 
-                    // Duration stats
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("TOTAL")
@@ -99,7 +95,6 @@ struct VoiceMessagesCard: View {
                         }
                     }
 
-                    // Total count
                     Text("\(stats.totalCount) VOICE MESSAGES TOTAL")
                         .font(AppTheme.caption)
                         .foregroundStyle(AppTheme.textMuted)
@@ -110,7 +105,6 @@ struct VoiceMessagesCard: View {
     }
 
     private func jumpToConversation() {
-        // Open Messages app to this contact's conversation
         if let phone = stats?.contactPhoneNumber,
            let encoded = phone.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
            let url = URL(string: "sms://\(encoded)") {
@@ -122,5 +116,5 @@ struct VoiceMessagesCard: View {
 #Preview {
     VoiceMessagesCard(stats: MockDataProvider.messageStats.voiceMessages)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }

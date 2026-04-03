@@ -20,11 +20,11 @@ struct SentReceivedCard: View {
                     let sentWidth = geometry.size.width * (stats.sentPercentage / 100)
                     HStack(spacing: 2) {
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(Color.white)
+                            .fill(AppTheme.barFill)
                             .frame(width: sentWidth)
 
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(Color.white.opacity(0.15))
+                            .fill(AppTheme.barEmpty)
                     }
                 }
                 .frame(height: 6)
@@ -46,5 +46,5 @@ struct SentReceivedCard: View {
 #Preview {
     SentReceivedCard(stats: MockDataProvider.messageStats)
         .padding()
-        .background(Color.black)
+        .background(AppTheme.background)
 }
