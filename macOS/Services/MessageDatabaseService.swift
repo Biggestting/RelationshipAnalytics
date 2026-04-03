@@ -84,6 +84,7 @@ final class MessageDatabaseService {
         let edited = try countEditedMessages(handleRowId: handleRowId)
         let unsent = try countUnsentMessages(handleRowId: handleRowId)
         let voiceStats = try fetchVoiceMessageStats(handleRowId: handleRowId)
+        let emojiStats = try fetchEmojiStats(handleRowId: handleRowId)
 
         return MessageStats(
             contactId: handleId,
@@ -101,7 +102,8 @@ final class MessageDatabaseService {
             firstMessageReceived: nil,
             messagesEdited: edited,
             messagesUnsent: unsent,
-            voiceMessages: voiceStats
+            voiceMessages: voiceStats,
+            emojiStats: emojiStats
         )
     }
 
@@ -409,6 +411,59 @@ final class MessageDatabaseService {
             averageDuration: avgDuration,
             longestDuration: longestDuration,
             contactPhoneNumber: nil
+        )
+    }
+
+    private func fetchEmojiStats(handleRowId: Int64) throws -> EmojiStats? {
+        let sql = """
+            SELECT text, is_from_me FROM message
+            WHERE handle_id = ?
+            AND text IS NOT NULL
+            AND text != ''
+        """
+        let messages: [(text: String, isFromMe: Bool)] = try query(sql, bind: { stmt in
+            sqlite3_bind_int64(stmt, 1, handleRowId)
+        }) { stmt in
+            (columnText(stmt, 0), sqlite3_column_int(stmt, 1) == 1)
+        }
+
+        var emojiCounts: [String: (fromYou: Int, fromThem: Int)] = [:]
+
+        for msg in messages {
+            for scalar in msg.text.unicodeScalars {
+                if scalar.properties.isEmoji && scalar.properties.isEmojiPresentation {
+                    let emoji = String(scalar)
+                    var current = emojiCounts[emoji] ?? (0, 0)
+                    if msg.isFromMe { current.fromYou += 1 }
+                    else { current.fromThem += 1 }
+                    emojiCounts[emoji] = current
+                }
+            }
+        }
+
+        guard !emojiCounts.isEmpty else { return nil }
+
+        let sorted = emojiCounts.map { key, val in
+            EmojiCount(emoji: key, count: val.fromYou + val.fromThem, fromYou: val.fromYou, fromThem: val.fromThem)
+        }.sorted { $0.count > $1.count }
+
+        let yourTop = sorted.sorted { $0.fromYou > $1.fromYou }.prefix(3).map {
+            EmojiCount(emoji: $0.emoji, count: $0.fromYou, fromYou: $0.fromYou, fromThem: 0)
+        }
+        let theirTop = sorted.sorted { $0.fromThem > $1.fromThem }.prefix(3).map {
+            EmojiCount(emoji: $0.emoji, count: $0.fromThem, fromYou: 0, fromThem: $0.fromThem)
+        }
+
+        let totalYou = emojiCounts.values.reduce(0) { $0 + $1.fromYou }
+        let totalThem = emojiCounts.values.reduce(0) { $0 + $1.fromThem }
+
+        return EmojiStats(
+            topEmojis: Array(sorted.prefix(10)),
+            yourTopEmojis: Array(yourTop),
+            theirTopEmojis: Array(theirTop),
+            totalEmojisSent: totalYou,
+            totalEmojisReceived: totalThem,
+            uniqueEmojiCount: emojiCounts.count
         )
     }
 

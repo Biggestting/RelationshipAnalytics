@@ -58,10 +58,35 @@ enum MockDataProvider {
         voiceMessages: VoiceMessageStats(
             sentCount: 12,
             receivedCount: 8,
-            totalDuration: 272,      // 4m 32s
-            averageDuration: 13.6,   // ~14s
-            longestDuration: 45,     // 45s
+            totalDuration: 272,
+            averageDuration: 13.6,
+            longestDuration: 45,
             contactPhoneNumber: "+1 (555) 123-4567"
+        ),
+        emojiStats: EmojiStats(
+            topEmojis: [
+                EmojiCount(emoji: "😂", count: 89, fromYou: 52, fromThem: 37),
+                EmojiCount(emoji: "❤️", count: 64, fromYou: 28, fromThem: 36),
+                EmojiCount(emoji: "😭", count: 41, fromYou: 25, fromThem: 16),
+                EmojiCount(emoji: "🔥", count: 33, fromYou: 20, fromThem: 13),
+                EmojiCount(emoji: "💀", count: 27, fromYou: 18, fromThem: 9),
+                EmojiCount(emoji: "😍", count: 22, fromYou: 8, fromThem: 14),
+                EmojiCount(emoji: "👀", count: 19, fromYou: 12, fromThem: 7),
+                EmojiCount(emoji: "🥺", count: 15, fromYou: 4, fromThem: 11),
+            ],
+            yourTopEmojis: [
+                EmojiCount(emoji: "😂", count: 52, fromYou: 52, fromThem: 0),
+                EmojiCount(emoji: "❤️", count: 28, fromYou: 28, fromThem: 0),
+                EmojiCount(emoji: "😭", count: 25, fromYou: 25, fromThem: 0),
+            ],
+            theirTopEmojis: [
+                EmojiCount(emoji: "❤️", count: 36, fromYou: 0, fromThem: 36),
+                EmojiCount(emoji: "😂", count: 37, fromYou: 0, fromThem: 37),
+                EmojiCount(emoji: "😭", count: 16, fromYou: 0, fromThem: 16),
+            ],
+            totalEmojisSent: 198,
+            totalEmojisReceived: 156,
+            uniqueEmojiCount: 43
         )
     )
 

@@ -28,6 +28,8 @@ struct ContactDetailView: View {
 
                     EditedUnsentCard(stats: messageStats)
 
+                    EmojiStatsCard(emojiStats: messageStats.emojiStats, contactName: contact.name)
+
                     MessageActivityHeatmap(stats: messageStats, contactName: contact.name)
 
                     HStack(spacing: AppTheme.sectionSpacing) {

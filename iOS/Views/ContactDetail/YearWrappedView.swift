@@ -112,7 +112,19 @@ struct YearWrappedView: View {
             ))
         }
 
-        // Card 7: Edited & unsent
+        // Card 7: Top emojis
+        if let emoji = stats.emojiStats, !emoji.topEmojis.isEmpty {
+            let top3 = emoji.topEmojis.prefix(3).map { $0.emoji }.joined(separator: "  ")
+            result.append(WrappedCard(
+                topLabel: "YOUR TOP EMOJIS TOGETHER",
+                bigStat: top3,
+                statLabel: "\(emoji.totalEmojis) EMOJIS SENT",
+                detail: "\(emoji.uniqueEmojiCount) UNIQUE EMOJIS · YOU SENT \(emoji.totalEmojisSent) · THEY SENT \(emoji.totalEmojisReceived)",
+                accentStat: false
+            ))
+        }
+
+        // Card 8: Edited & unsent
         if stats.messagesEdited > 0 || stats.messagesUnsent > 0 {
             result.append(WrappedCard(
                 topLabel: "SECOND THOUGHTS",

@@ -21,6 +21,7 @@
 		31DE929232A5FCF2C915509A /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
 		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
 		3F496B195B7AE9C1440D1D1E /* WhatsAppParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */; };
+		40184DC172795066326FBFE5 /* EmojiStatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */; };
 		40E79DB49292200FDC22E138 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565739EB1397CABCC8C9ADB8 /* ImportView.swift */; };
 		4A0AE79BD0948271A69F435C /* MessengerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887613950A0A64098EA4CB3C /* MessengerParser.swift */; };
 		4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */; };
@@ -79,6 +80,7 @@
 		0B4DA5F2B41378E912C05E57 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualInsightsCard.swift; sourceTree = "<group>"; };
 		10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogCard.swift; sourceTree = "<group>"; };
+		15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatsCard.swift; sourceTree = "<group>"; };
 		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
 		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipAnalyticsApp.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				99F8EF9644FAD5E60835221A /* CallTimeCard.swift */,
 				C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */,
 				5325474B42653B4117114EB8 /* EditedUnsentCard.swift */,
+				15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */,
 				AB85FA6A27A191F06922908B /* FaceTimeCard.swift */,
 				ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */,
 				0B4DA5F2B41378E912C05E57 /* HeaderView.swift */,
@@ -437,6 +440,7 @@
 				73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */,
 				E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */,
 				532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */,
+				40184DC172795066326FBFE5 /* EmojiStatsCard.swift in Sources */,
 				617BA19DEAE0078D655BD082 /* FaceTimeCard.swift in Sources */,
 				F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */,
 				53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */,

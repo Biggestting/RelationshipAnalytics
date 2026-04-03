@@ -97,7 +97,46 @@ final class ImportManager {
             firstMessageReceived: nil,
             messagesEdited: result.editedCount,
             messagesUnsent: result.unsentCount,
-            voiceMessages: voiceMessages
+            voiceMessages: voiceMessages,
+            emojiStats: extractEmojiStats(from: result.messages)
+        )
+    }
+
+    private func extractEmojiStats(from messages: [ImportedMessage]) -> EmojiStats? {
+        var counts: [String: (fromYou: Int, fromThem: Int)] = [:]
+
+        for msg in messages {
+            for scalar in msg.text.unicodeScalars {
+                if scalar.properties.isEmoji && scalar.properties.isEmojiPresentation {
+                    let emoji = String(scalar)
+                    var current = counts[emoji] ?? (0, 0)
+                    if msg.isFromUser { current.fromYou += 1 }
+                    else { current.fromThem += 1 }
+                    counts[emoji] = current
+                }
+            }
+        }
+
+        guard !counts.isEmpty else { return nil }
+
+        let sorted = counts.map { key, val in
+            EmojiCount(emoji: key, count: val.fromYou + val.fromThem, fromYou: val.fromYou, fromThem: val.fromThem)
+        }.sorted { $0.count > $1.count }
+
+        let yourTop = sorted.sorted { $0.fromYou > $1.fromYou }.prefix(3).map {
+            EmojiCount(emoji: $0.emoji, count: $0.fromYou, fromYou: $0.fromYou, fromThem: 0)
+        }
+        let theirTop = sorted.sorted { $0.fromThem > $1.fromThem }.prefix(3).map {
+            EmojiCount(emoji: $0.emoji, count: $0.fromThem, fromYou: 0, fromThem: $0.fromThem)
+        }
+
+        return EmojiStats(
+            topEmojis: Array(sorted.prefix(10)),
+            yourTopEmojis: Array(yourTop),
+            theirTopEmojis: Array(theirTop),
+            totalEmojisSent: counts.values.reduce(0) { $0 + $1.fromYou },
+            totalEmojisReceived: counts.values.reduce(0) { $0 + $1.fromThem },
+            uniqueEmojiCount: counts.count
         )
     }
 

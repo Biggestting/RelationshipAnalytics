@@ -17,6 +17,7 @@ struct MessageStats: Codable {
     let messagesEdited: Int
     let messagesUnsent: Int
     let voiceMessages: VoiceMessageStats?
+    let emojiStats: EmojiStats?
 
     var sentPercentage: Double {
         guard totalMessages > 0 else { return 0 }
@@ -126,6 +127,30 @@ struct VoiceMessageStats: Codable {
         }
         return "\(seconds)s"
     }
+}
+
+struct EmojiStats: Codable {
+    let topEmojis: [EmojiCount]         // sorted by total, descending
+    let yourTopEmojis: [EmojiCount]     // your most used
+    let theirTopEmojis: [EmojiCount]    // their most used
+    let totalEmojisSent: Int
+    let totalEmojisReceived: Int
+    let uniqueEmojiCount: Int
+
+    var totalEmojis: Int { totalEmojisSent + totalEmojisReceived }
+
+    /// Top 3 emojis as a string like "😂 ❤️ 😭"
+    var top3String: String {
+        topEmojis.prefix(3).map { $0.emoji }.joined(separator: " ")
+    }
+}
+
+struct EmojiCount: Codable, Identifiable {
+    var id: String { emoji }
+    let emoji: String
+    let count: Int
+    let fromYou: Int
+    let fromThem: Int
 }
 
 struct MessagePreview: Codable {
