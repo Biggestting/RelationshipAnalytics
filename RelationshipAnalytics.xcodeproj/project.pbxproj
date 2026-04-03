@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */; };
 		053AD6E015B8ABA577F87F69 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */; };
+		0731BB51462926F7B2BEE075 /* TwitterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08F6B5BE9BEA4D1270AE071 /* TwitterParser.swift */; };
 		09513863534A1021F714A22F /* CallTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8EF9644FAD5E60835221A /* CallTimeCard.swift */; };
 		12C7DDD1E3B19F6FA6EBDB69 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E75E74E5815CA19D52B16 /* MacApp.swift */; };
 		196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
@@ -18,10 +19,15 @@
 		2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */; };
 		31DE929232A5FCF2C915509A /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
 		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
+		3F496B195B7AE9C1440D1D1E /* WhatsAppParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */; };
+		40E79DB49292200FDC22E138 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565739EB1397CABCC8C9ADB8 /* ImportView.swift */; };
+		4A0AE79BD0948271A69F435C /* MessengerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887613950A0A64098EA4CB3C /* MessengerParser.swift */; };
 		4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */; };
 		4FB7F536DB21623876599497 /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5FFF954A466568E403B6E /* MacContentView.swift */; };
 		53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F314ECB9199FFB80DD1DC /* GlassCard.swift */; };
 		532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325474B42653B4117114EB8 /* EditedUnsentCard.swift */; };
+		57DB6E50490798223E562103 /* WhatsAppParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */; };
+		5A3B4C467ACC0F7A2302150A /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E88825670790104C2BFFAC /* ImportManager.swift */; };
 		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		617BA19DEAE0078D655BD082 /* FaceTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85FA6A27A191F06922908B /* FaceTimeCard.swift */; };
 		64B4154F439082FD5E309989 /* PhotosTogetherCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */; };
@@ -29,20 +35,26 @@
 		6A53EFAA8BE7BD92E1775D09 /* CallLogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */; };
 		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
 		70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */; };
+		7091823F1EE30B7D56DCAA5C /* TwitterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08F6B5BE9BEA4D1270AE071 /* TwitterParser.swift */; };
 		71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */; };
 		73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
 		7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */; };
 		8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */; };
+		8649F4D865399A08D7CA252D /* InstagramParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65EF6731704E9880F075B65 /* InstagramParser.swift */; };
+		881409DF94AE83A1042D914C /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E88825670790104C2BFFAC /* ImportManager.swift */; };
 		8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */; };
 		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
 		AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49769C57E302C878CA2D9504 /* NotesCard.swift */; };
 		ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDBFA499148B60BFA2226E /* CallLogService.swift */; };
 		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
+		BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48359B73090053D54A08150E /* ImportedMessage.swift */; };
 		C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
 		C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */; };
 		CA0542E027362DC747973274 /* CallStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30394B7F62AD2FDEA02F9D90 /* CallStats.swift */; };
 		CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */; };
+		CC3D76636DC7D1E2E712C827 /* MessengerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887613950A0A64098EA4CB3C /* MessengerParser.swift */; };
+		D40F625988A7625FAB06F048 /* ImportedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48359B73090053D54A08150E /* ImportedMessage.swift */; };
 		D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
 		DBC688F96A38441C1766CAED /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		DDF359535AC735690EBBE159 /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
@@ -50,6 +62,7 @@
 		E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684E431D3F03099B3886B67E /* ContentView.swift */; };
 		E96D30A553462B16E7F5E390 /* CallStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30394B7F62AD2FDEA02F9D90 /* CallStats.swift */; };
 		E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7340CD645540A8206811A2 /* LongestConvoCard.swift */; };
+		E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65EF6731704E9880F075B65 /* InstagramParser.swift */; };
 		F17FCC8FC12E0A103527AE9B /* CallPatternsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32CD8D0B4402A8EE0B07E91 /* CallPatternsCard.swift */; };
 		F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */; };
 		F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
@@ -66,17 +79,22 @@
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
 		34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedCallsCard.swift; sourceTree = "<group>"; };
 		3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTimeCard.swift; sourceTree = "<group>"; };
+		48359B73090053D54A08150E /* ImportedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedMessage.swift; sourceTree = "<group>"; };
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
 		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
+		565739EB1397CABCC8C9ADB8 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppParser.swift; sourceTree = "<group>"; };
 		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
 		7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RelationshipAnalytics-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouStartCard.swift; sourceTree = "<group>"; };
 		87C06589087958EE60502677 /* RelationshipAnalytics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RelationshipAnalytics.entitlements; sourceTree = "<group>"; };
+		887613950A0A64098EA4CB3C /* MessengerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerParser.swift; sourceTree = "<group>"; };
 		99F8EF9644FAD5E60835221A /* CallTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCard.swift; sourceTree = "<group>"; };
 		9A95F46592433559B2F00B38 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		A369835231B408935C0FAA75 /* CloudKitSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncService.swift; sourceTree = "<group>"; };
+		A3E88825670790104C2BFFAC /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
 		AB7340CD645540A8206811A2 /* LongestConvoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestConvoCard.swift; sourceTree = "<group>"; };
 		AB85FA6A27A191F06922908B /* FaceTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTimeCard.swift; sourceTree = "<group>"; };
 		AF28E107A1E124AC60C26C62 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
@@ -97,6 +115,8 @@
 		E81825180D2635DAF76A7CA1 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
 		E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagesCard.swift; sourceTree = "<group>"; };
 		ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMessagesCard.swift; sourceTree = "<group>"; };
+		F08F6B5BE9BEA4D1270AE071 /* TwitterParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterParser.swift; sourceTree = "<group>"; };
+		F65EF6731704E9880F075B65 /* InstagramParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramParser.swift; sourceTree = "<group>"; };
 		F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		FCD5FFF954A466568E403B6E /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +137,7 @@
 				19827E92542452E6969E35D2 /* Components */,
 				54009680EC3D3DAFB09935A5 /* ContactDetail */,
 				CA38A6803027C65AB1E07D1F /* ContactList */,
+				B7FFBA8672AA10A07ED0D44D /* Import */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +231,7 @@
 			children = (
 				A369835231B408935C0FAA75 /* CloudKitSyncService.swift */,
 				C5082C202F0B148267454573 /* MockDataProvider.swift */,
+				A0A6D2410A7C4E7E1F9C8519 /* Importers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -220,6 +242,7 @@
 				30394B7F62AD2FDEA02F9D90 /* CallStats.swift */,
 				5EB229CE6935667A32DEAD38 /* Contact.swift */,
 				7BE26E529B223C3D3E1F57AF /* ContactNote.swift */,
+				48359B73090053D54A08150E /* ImportedMessage.swift */,
 				C84F89D8100E35B4B029FDC6 /* MessageStats.swift */,
 				AF28E107A1E124AC60C26C62 /* RankData.swift */,
 			);
@@ -234,6 +257,18 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		A0A6D2410A7C4E7E1F9C8519 /* Importers */ = {
+			isa = PBXGroup;
+			children = (
+				A3E88825670790104C2BFFAC /* ImportManager.swift */,
+				F65EF6731704E9880F075B65 /* InstagramParser.swift */,
+				887613950A0A64098EA4CB3C /* MessengerParser.swift */,
+				F08F6B5BE9BEA4D1270AE071 /* TwitterParser.swift */,
+				73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */,
+			);
+			path = Importers;
+			sourceTree = "<group>";
+		};
 		AEA6AA5A293235AB791BAC5C /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +276,14 @@
 				CCCD6E5299E8CF26D81582A3 /* SyncManager.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		B7FFBA8672AA10A07ED0D44D /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				565739EB1397CABCC8C9ADB8 /* ImportView.swift */,
+			);
+			path = Import;
 			sourceTree = "<group>";
 		};
 		CA38A6803027C65AB1E07D1F /* ContactList */ = {
@@ -384,9 +427,14 @@
 				53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */,
 				9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */,
 				28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */,
+				881409DF94AE83A1042D914C /* ImportManager.swift in Sources */,
+				40E79DB49292200FDC22E138 /* ImportView.swift in Sources */,
+				BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */,
+				E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */,
 				E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */,
 				1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */,
 				C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */,
+				CC3D76636DC7D1E2E712C827 /* MessengerParser.swift in Sources */,
 				2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */,
 				F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */,
 				AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */,
@@ -396,7 +444,9 @@
 				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
 				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
 				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
+				7091823F1EE30B7D56DCAA5C /* TwitterParser.swift in Sources */,
 				4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */,
+				57DB6E50490798223E562103 /* WhatsAppParser.swift in Sources */,
 				C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,14 +461,20 @@
 				196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */,
 				8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */,
 				D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */,
+				5A3B4C467ACC0F7A2302150A /* ImportManager.swift in Sources */,
+				D40F625988A7625FAB06F048 /* ImportedMessage.swift in Sources */,
+				8649F4D865399A08D7CA252D /* InstagramParser.swift in Sources */,
 				12C7DDD1E3B19F6FA6EBDB69 /* MacApp.swift in Sources */,
 				4FB7F536DB21623876599497 /* MacContentView.swift in Sources */,
 				7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */,
 				DDF359535AC735690EBBE159 /* MessageStats.swift in Sources */,
+				4A0AE79BD0948271A69F435C /* MessengerParser.swift in Sources */,
 				2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */,
 				31DE929232A5FCF2C915509A /* RankData.swift in Sources */,
 				DEB4DF5AF975D4403B73BC95 /* RankingService.swift in Sources */,
 				053AD6E015B8ABA577F87F69 /* SyncManager.swift in Sources */,
+				0731BB51462926F7B2BEE075 /* TwitterParser.swift in Sources */,
+				3F496B195B7AE9C1440D1D1E /* WhatsAppParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
