@@ -34,6 +34,7 @@
 		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		617BA19DEAE0078D655BD082 /* FaceTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85FA6A27A191F06922908B /* FaceTimeCard.swift */; };
 		64B4154F439082FD5E309989 /* PhotosTogetherCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */; };
+		65D6F7337C252DFDC0E1DD96 /* ShortcutsIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */; };
 		66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		6A53EFAA8BE7BD92E1775D09 /* CallLogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */; };
 		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
@@ -51,6 +52,8 @@
 		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
 		A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */; };
+		A7405072D65F443AD0FB66CB /* MessageTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59963A65BD7C3B18B4014303 /* MessageTracker.swift */; };
+		AA9ADCD0C8961EF870E74FDC /* DataSourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062D6400659C7FA683869507 /* DataSourcesView.swift */; };
 		AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49769C57E302C878CA2D9504 /* NotesCard.swift */; };
 		ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDBFA499148B60BFA2226E /* CallLogService.swift */; };
 		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
@@ -62,6 +65,8 @@
 		CC3D76636DC7D1E2E712C827 /* MessengerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887613950A0A64098EA4CB3C /* MessengerParser.swift */; };
 		D40F625988A7625FAB06F048 /* ImportedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48359B73090053D54A08150E /* ImportedMessage.swift */; };
 		D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
+		D810974F5CB62BA4DD0FA786 /* CallTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0356D6919862D7CFC4A77 /* CallTracker.swift */; };
+		D8AB0A2983C1CB07A7F00803 /* LiveDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */; };
 		DBC688F96A38441C1766CAED /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		DDF359535AC735690EBBE159 /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
 		DEB4DF5AF975D4403B73BC95 /* RankingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81825180D2635DAF76A7CA1 /* RankingService.swift */; };
@@ -76,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		062D6400659C7FA683869507 /* DataSourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourcesView.swift; sourceTree = "<group>"; };
 		09D52C21D68CDF154303127E /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		0B4DA5F2B41378E912C05E57 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualInsightsCard.swift; sourceTree = "<group>"; };
@@ -92,15 +98,18 @@
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
 		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
 		565739EB1397CABCC8C9ADB8 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		59963A65BD7C3B18B4014303 /* MessageTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTracker.swift; sourceTree = "<group>"; };
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppParser.swift; sourceTree = "<group>"; };
 		76442B773CEB771984FD36B8 /* YearWrappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearWrappedView.swift; sourceTree = "<group>"; };
+		769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsIntegration.swift; sourceTree = "<group>"; };
 		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
 		7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RelationshipAnalytics-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouStartCard.swift; sourceTree = "<group>"; };
 		87C06589087958EE60502677 /* RelationshipAnalytics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RelationshipAnalytics.entitlements; sourceTree = "<group>"; };
 		887613950A0A64098EA4CB3C /* MessengerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerParser.swift; sourceTree = "<group>"; };
+		8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDataStore.swift; sourceTree = "<group>"; };
 		90EBD2CA7D1597A1D145F43D /* RelationshipDNAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipDNAView.swift; sourceTree = "<group>"; };
 		99F8EF9644FAD5E60835221A /* CallTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCard.swift; sourceTree = "<group>"; };
 		9A95F46592433559B2F00B38 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
@@ -110,6 +119,7 @@
 		AB85FA6A27A191F06922908B /* FaceTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTimeCard.swift; sourceTree = "<group>"; };
 		AF28E107A1E124AC60C26C62 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		B5FDBFA499148B60BFA2226E /* CallLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogService.swift; sourceTree = "<group>"; };
+		B8F0356D6919862D7CFC4A77 /* CallTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTracker.swift; sourceTree = "<group>"; };
 		B9784B9A744094D994914F30 /* MessageActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActivityDetailView.swift; sourceTree = "<group>"; };
 		BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDatabaseService.swift; sourceTree = "<group>"; };
 		C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveStreakCard.swift; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 				54009680EC3D3DAFB09935A5 /* ContactDetail */,
 				CA38A6803027C65AB1E07D1F /* ContactList */,
 				B7FFBA8672AA10A07ED0D44D /* Import */,
+				6CCE761269FC5FF5FF8A4273 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 			children = (
 				D1DB82F81335EB818463AB51 /* App */,
 				243DBFD3AF415BC9446D8D24 /* Resources */,
+				E6C372A633C4B26FBFDCDA6C /* Services */,
 				0DD10A6829F8D61B821884D7 /* Views */,
 			);
 			path = iOS;
@@ -252,6 +264,14 @@
 				A0A6D2410A7C4E7E1F9C8519 /* Importers */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		6CCE761269FC5FF5FF8A4273 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				062D6400659C7FA683869507 /* DataSourcesView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		81DD79AAB98FFA6EDE4E392A /* Models */ = {
@@ -328,6 +348,17 @@
 				259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		E6C372A633C4B26FBFDCDA6C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B8F0356D6919862D7CFC4A77 /* CallTracker.swift */,
+				8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */,
+				59963A65BD7C3B18B4014303 /* MessageTracker.swift */,
+				769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		F9CC7C1C2C1F560CBD25459D /* Services */ = {
@@ -433,12 +464,14 @@
 				F17FCC8FC12E0A103527AE9B /* CallPatternsCard.swift in Sources */,
 				CA0542E027362DC747973274 /* CallStats.swift in Sources */,
 				09513863534A1021F714A22F /* CallTimeCard.swift in Sources */,
+				D810974F5CB62BA4DD0FA786 /* CallTracker.swift in Sources */,
 				F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */,
 				DBC688F96A38441C1766CAED /* Contact.swift in Sources */,
 				8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */,
 				6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */,
 				73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */,
 				E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */,
+				AA9ADCD0C8961EF870E74FDC /* DataSourcesView.swift in Sources */,
 				532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */,
 				40184DC172795066326FBFE5 /* EmojiStatsCard.swift in Sources */,
 				617BA19DEAE0078D655BD082 /* FaceTimeCard.swift in Sources */,
@@ -450,11 +483,13 @@
 				40E79DB49292200FDC22E138 /* ImportView.swift in Sources */,
 				BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */,
 				E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */,
+				D8AB0A2983C1CB07A7F00803 /* LiveDataStore.swift in Sources */,
 				E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */,
 				801379D7BDCA25405079A7FB /* ManageNumbersSheet.swift in Sources */,
 				4F6E89328AD6E0AB6720006F /* MessageActivityDetailView.swift in Sources */,
 				1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */,
 				C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */,
+				A7405072D65F443AD0FB66CB /* MessageTracker.swift in Sources */,
 				CC3D76636DC7D1E2E712C827 /* MessengerParser.swift in Sources */,
 				2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */,
 				F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */,
@@ -466,6 +501,7 @@
 				7FFEB4F1EFA4C80C5EA9E41F /* RelationshipDNAView.swift in Sources */,
 				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
 				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
+				65D6F7337C252DFDC0E1DD96 /* ShortcutsIntegration.swift in Sources */,
 				7091823F1EE30B7D56DCAA5C /* TwitterParser.swift in Sources */,
 				A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */,
 				4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */,

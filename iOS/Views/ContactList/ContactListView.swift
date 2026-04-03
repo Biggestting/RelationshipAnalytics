@@ -5,6 +5,7 @@ struct ContactListView: View {
     @EnvironmentObject var appearanceManager: AppearanceManager
     @State private var showAppearancePicker = false
     @State private var showImport = false
+    @State private var showDataSources = false
     @State private var importedChats: [ImportResult] = []
 
     var body: some View {
@@ -66,6 +67,11 @@ struct ContactListView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 14) {
+                    Button { showDataSources = true } label: {
+                        Image(systemName: "antenna.radiowaves.left.and.right")
+                            .font(.system(size: 15))
+                            .foregroundStyle(AppTheme.textPrimary)
+                    }
                     Button { showImport = true } label: {
                         Image(systemName: "square.and.arrow.down")
                             .font(.system(size: 16))
@@ -85,6 +91,9 @@ struct ContactListView: View {
         }
         .sheet(isPresented: $showImport, onDismiss: { loadImports() }) {
             ImportView()
+        }
+        .sheet(isPresented: $showDataSources) {
+            DataSourcesView()
         }
         .onAppear { loadImports() }
     }

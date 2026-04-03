@@ -33,6 +33,9 @@ targets:
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         NSPhotoLibraryUsageDescription: "Access your photos to find pictures with this contact"
+        CFBundleURLTypes:
+          - CFBundleURLSchemes: [ra, relationshipanalytics]
+            CFBundleURLName: "com.relationshipanalytics.ios"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.ios
