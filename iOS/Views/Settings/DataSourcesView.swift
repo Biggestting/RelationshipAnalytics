@@ -92,36 +92,69 @@ struct DataSourcesView: View {
                                         .foregroundStyle(AppTheme.textPrimary)
                                 }
 
-                                Text("USE AN IOS SHORTCUT TO EXPORT YOUR IMESSAGE HISTORY DIRECTLY FROM THE MESSAGES APP. THIS IS THE MOST COMPLETE WAY TO GET YOUR DATA WITHOUT A MAC.")
+                                Text("EXPORT YOUR FULL IMESSAGE HISTORY WITH ONE TAP. OUR PRE-BUILT SHORTCUT READS YOUR MESSAGES AND SENDS THEM DIRECTLY TO THE APP.")
                                     .font(.system(size: 10, design: .monospaced))
                                     .foregroundStyle(AppTheme.textMuted)
                                     .lineSpacing(3)
 
                                 Rectangle().fill(AppTheme.divider).frame(height: 1)
 
-                                Text(ShortcutsIntegration.shortcutInstructions)
-                                    .font(.system(size: 9, design: .monospaced))
-                                    .foregroundStyle(AppTheme.textSecondary)
-                                    .lineSpacing(2)
-
+                                // One-tap install buttons
                                 Button {
-                                    if let url = ShortcutsIntegration.shared.shortcutInstallURL {
-                                        UIApplication.shared.open(url)
-                                    }
+                                    ShortcutBuilder.openAppShortcutsGallery()
                                 } label: {
-                                    HStack {
-                                        Image(systemName: "square.and.arrow.up")
-                                        Text("OPEN SHORTCUTS APP")
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "plus.app")
+                                            .font(.system(size: 16))
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text("GET SHORTCUT")
+                                                .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                                            Text("OPENS SHORTCUTS APP WITH OUR PRE-BUILT ACTIONS")
+                                                .font(.system(size: 8, design: .monospaced))
+                                                .foregroundStyle(AppTheme.textMuted)
+                                        }
                                     }
-                                    .font(.system(size: 12, weight: .semibold, design: .monospaced))
                                     .foregroundStyle(AppTheme.textPrimary)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 12)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(12)
                                     .background(
                                         RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
-                                            .strokeBorder(AppTheme.textSecondary, lineWidth: 1)
+                                            .fill(AppTheme.accentRed.opacity(0.1))
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                                    .strokeBorder(AppTheme.accentRed.opacity(0.3), lineWidth: 1)
+                                            )
                                     )
                                 }
+
+                                Button {
+                                    ShortcutBuilder.shareShortcut()
+                                } label: {
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "square.and.arrow.up")
+                                            .font(.system(size: 14))
+                                        Text("SHARE SHORTCUT FILE")
+                                            .font(.system(size: 11, design: .monospaced))
+                                    }
+                                    .foregroundStyle(AppTheme.textSecondary)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: AppTheme.cardCornerRadius)
+                                            .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
+                                    )
+                                }
+
+                                // Available intents
+                                Rectangle().fill(AppTheme.divider).frame(height: 1)
+
+                                Text("AVAILABLE APP ACTIONS")
+                                    .font(AppTheme.caption)
+                                    .foregroundStyle(AppTheme.textMuted)
+
+                                IntentRow(icon: "bubble.left.and.bubble.right", name: "IMPORT MESSAGES", description: "BULK IMPORT FULL CHAT HISTORY")
+                                IntentRow(icon: "message", name: "LOG MESSAGE", description: "TRACK INDIVIDUAL SENT/RECEIVED")
+                                IntentRow(icon: "phone", name: "LOG CALL", description: "RECORD A PHONE CALL EVENT")
                             }
                         }
 
@@ -264,6 +297,30 @@ struct TrackingRow: View {
                                     .strokeBorder(isEnabled ? AppTheme.accentRed.opacity(0.4) : AppTheme.cardBorder, lineWidth: 1)
                             )
                     )
+            }
+        }
+    }
+}
+
+struct IntentRow: View {
+    let icon: String
+    let name: String
+    let description: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 12))
+                .foregroundStyle(AppTheme.textSecondary)
+                .frame(width: 20)
+
+            VStack(alignment: .leading, spacing: 1) {
+                Text(name)
+                    .font(.system(size: 10, weight: .medium, design: .monospaced))
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text(description)
+                    .font(.system(size: 8, design: .monospaced))
+                    .foregroundStyle(AppTheme.textMuted)
             }
         }
     }

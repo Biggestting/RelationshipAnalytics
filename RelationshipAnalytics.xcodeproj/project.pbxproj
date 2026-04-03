@@ -14,7 +14,9 @@
 		12C7DDD1E3B19F6FA6EBDB69 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E75E74E5815CA19D52B16 /* MacApp.swift */; };
 		196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
 		1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */; };
+		218DCB47C4F3B3B8E54743BE /* ShortcutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91601EFAF79BFAC6348938F3 /* ShortcutBuilder.swift */; };
 		28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DA5F2B41378E912C05E57 /* HeaderView.swift */; };
+		29B627F06DFCAD1D6EDC05D2 /* ImportMessagesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC29F71446D35E5EFB0E8A /* ImportMessagesIntent.swift */; };
 		2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
 		2BB1419DF5D6FF0BBFBCEC56 /* YearWrappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76442B773CEB771984FD36B8 /* YearWrappedView.swift */; };
 		2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */; };
@@ -59,6 +61,7 @@
 		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
 		BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48359B73090053D54A08150E /* ImportedMessage.swift */; };
 		C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
+		C88839F7D1B3DEC965A9F4F5 /* RAShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239628B6D327FEE3719E1265 /* RAShortcutsProvider.swift */; };
 		C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */; };
 		CA0542E027362DC747973274 /* CallStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30394B7F62AD2FDEA02F9D90 /* CallStats.swift */; };
 		CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */; };
@@ -89,6 +92,7 @@
 		15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatsCard.swift; sourceTree = "<group>"; };
 		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
 		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		239628B6D327FEE3719E1265 /* RAShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAShortcutsProvider.swift; sourceTree = "<group>"; };
 		259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipAnalyticsApp.swift; sourceTree = "<group>"; };
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
 		34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedCallsCard.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		455ABAD56F0C54223BD2D4FF /* ManageNumbersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNumbersSheet.swift; sourceTree = "<group>"; };
 		48359B73090053D54A08150E /* ImportedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedMessage.swift; sourceTree = "<group>"; };
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
+		49CC29F71446D35E5EFB0E8A /* ImportMessagesIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportMessagesIntent.swift; sourceTree = "<group>"; };
 		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
 		565739EB1397CABCC8C9ADB8 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		59963A65BD7C3B18B4014303 /* MessageTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTracker.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 		887613950A0A64098EA4CB3C /* MessengerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerParser.swift; sourceTree = "<group>"; };
 		8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDataStore.swift; sourceTree = "<group>"; };
 		90EBD2CA7D1597A1D145F43D /* RelationshipDNAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipDNAView.swift; sourceTree = "<group>"; };
+		91601EFAF79BFAC6348938F3 /* ShortcutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutBuilder.swift; sourceTree = "<group>"; };
 		99F8EF9644FAD5E60835221A /* CallTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCard.swift; sourceTree = "<group>"; };
 		9A95F46592433559B2F00B38 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		A369835231B408935C0FAA75 /* CloudKitSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncService.swift; sourceTree = "<group>"; };
@@ -189,6 +195,16 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2DD86D7CD3D2D79F047A942F /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				49CC29F71446D35E5EFB0E8A /* ImportMessagesIntent.swift */,
+				239628B6D327FEE3719E1265 /* RAShortcutsProvider.swift */,
+				91601EFAF79BFAC6348938F3 /* ShortcutBuilder.swift */,
+			);
+			path = AppIntents;
 			sourceTree = "<group>";
 		};
 		3C1081EE897CE78073CA997C /* iOS */ = {
@@ -357,6 +373,7 @@
 				8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */,
 				59963A65BD7C3B18B4014303 /* MessageTracker.swift */,
 				769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */,
+				2DD86D7CD3D2D79F047A942F /* AppIntents */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -480,6 +497,7 @@
 				9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */,
 				28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */,
 				881409DF94AE83A1042D914C /* ImportManager.swift in Sources */,
+				29B627F06DFCAD1D6EDC05D2 /* ImportMessagesIntent.swift in Sources */,
 				40E79DB49292200FDC22E138 /* ImportView.swift in Sources */,
 				BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */,
 				E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */,
@@ -495,12 +513,14 @@
 				F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */,
 				AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */,
 				64B4154F439082FD5E309989 /* PhotosTogetherCard.swift in Sources */,
+				C88839F7D1B3DEC965A9F4F5 /* RAShortcutsProvider.swift in Sources */,
 				BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */,
 				71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */,
 				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
 				7FFEB4F1EFA4C80C5EA9E41F /* RelationshipDNAView.swift in Sources */,
 				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
 				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
+				218DCB47C4F3B3B8E54743BE /* ShortcutBuilder.swift in Sources */,
 				65D6F7337C252DFDC0E1DD96 /* ShortcutsIntegration.swift in Sources */,
 				7091823F1EE30B7D56DCAA5C /* TwitterParser.swift in Sources */,
 				A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */,
