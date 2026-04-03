@@ -22,7 +22,7 @@ struct ContactDetailView: View {
 
                     EditedUnsentCard(stats: messageStats)
 
-                    MessageActivityHeatmap(stats: messageStats)
+                    MessageActivityHeatmap(stats: messageStats, contactName: contact.name)
 
                     HStack(spacing: AppTheme.sectionSpacing) {
                         ActiveStreakCard(
