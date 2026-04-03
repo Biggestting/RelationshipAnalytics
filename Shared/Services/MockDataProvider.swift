@@ -61,7 +61,27 @@ enum MockDataProvider {
         answeredCalls: 26,
         averageCallDuration: 60, // 1 minute
         lastAnsweredDate: dateFrom("2026-03-14"),
-        monthlyCallData: generateMonthlyCallData()
+        monthlyCallData: generateMonthlyCallData(),
+        callRecords: generateCallRecords(),
+        hourlyCallPattern: generateHourlyPattern(),
+        missedStats: MissedCallStats(
+            youMissed: 2,
+            theyMissed: 5,
+            totalMissed: 7,
+            totalAnswered: 26,
+            yourAnswerRate: 92,
+            theirAnswerRate: 78,
+            longestUnansweredStreak: 3
+        ),
+        faceTimeStats: FaceTimeStats(
+            videoCallCount: 4,
+            audioCallCount: 6,
+            regularCallCount: 20,
+            videoTotalDuration: 1800,    // 30m
+            audioFTDuration: 480,        // 8m
+            regularDuration: 720,        // 12m
+            lastFaceTimeDate: dateFrom("2026-03-10")
+        )
     )
 
     static let rankData = RankData(
@@ -122,6 +142,57 @@ enum MockDataProvider {
             }
             return MonthlyCallData(month: month, year: year, totalMinutes: minutes, callCount: calls)
         }
+    }
+
+    private static func generateCallRecords() -> [CallRecord] {
+        let calendar = Calendar.current
+        var records: [CallRecord] = []
+        let types: [CallRecord.CallType] = [.audio, .audio, .audio, .faceTimeVideo, .faceTimeAudio]
+        let directions: [CallRecord.CallDirection] = [.incoming, .outgoing]
+
+        for i in 0..<20 {
+            let daysAgo = Int.random(in: 0...90)
+            let hour = [9, 12, 14, 18, 20, 22].randomElement()!
+            var components = calendar.dateComponents([.year, .month, .day], from: calendar.date(byAdding: .day, value: -daysAgo, to: Date())!)
+            components.hour = hour
+            components.minute = Int.random(in: 0...59)
+            let date = calendar.date(from: components) ?? Date()
+
+            let answered = i < 15 // first 15 answered, last 5 missed
+            let duration: TimeInterval = answered ? TimeInterval(Int.random(in: 15...300)) : 0
+            let type = types[i % types.count]
+            let direction = directions[i % directions.count]
+
+            records.append(CallRecord(
+                date: date,
+                duration: duration,
+                type: type,
+                direction: direction,
+                answered: answered
+            ))
+        }
+        return records.sorted { $0.date > $1.date }
+    }
+
+    private static func generateHourlyPattern() -> [HourlyCallData] {
+        var data: [HourlyCallData] = []
+        for day in 1...7 {
+            for hour in 0..<24 {
+                let count: Int
+                // More calls in evening, fewer at night
+                switch hour {
+                case 0...6: count = 0
+                case 7...8: count = Int.random(in: 0...1)
+                case 9...11: count = Int.random(in: 0...2)
+                case 12...14: count = Int.random(in: 0...2)
+                case 15...17: count = Int.random(in: 0...1)
+                case 18...21: count = Int.random(in: 1...4)
+                default: count = Int.random(in: 0...2)
+                }
+                data.append(HourlyCallData(hour: hour, callCount: count, dayOfWeek: day))
+            }
+        }
+        return data
     }
 
     private static func generateRankHistory() -> [RankPoint] {

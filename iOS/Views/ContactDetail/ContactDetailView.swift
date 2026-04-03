@@ -40,6 +40,14 @@ struct ContactDetailView: View {
 
                     CallTimeCard(callStats: callStats)
 
+                    MissedCallsCard(stats: callStats.missedStats, contactName: contact.name)
+
+                    FaceTimeCard(stats: callStats.faceTimeStats)
+
+                    CallPatternsCard(hourlyData: callStats.hourlyCallPattern)
+
+                    CallLogCard(records: callStats.callRecords)
+
                     RankOverTimeCard(rankData: rankData)
 
                     LongestConvoCard(convo: messageStats.longestConvo)
