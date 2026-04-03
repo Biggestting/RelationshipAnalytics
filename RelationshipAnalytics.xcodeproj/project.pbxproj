@@ -16,6 +16,7 @@
 		1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */; };
 		28B96B27A0C9C9BDF7FDB988 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DA5F2B41378E912C05E57 /* HeaderView.swift */; };
 		2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
+		2BB1419DF5D6FF0BBFBCEC56 /* YearWrappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76442B773CEB771984FD36B8 /* YearWrappedView.swift */; };
 		2C05209D880169089E9B543F /* MissedCallsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */; };
 		31DE929232A5FCF2C915509A /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
 		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
@@ -40,6 +41,7 @@
 		71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */; };
 		73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
 		7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */; };
+		7FFEB4F1EFA4C80C5EA9E41F /* RelationshipDNAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EBD2CA7D1597A1D145F43D /* RelationshipDNAView.swift */; };
 		801379D7BDCA25405079A7FB /* ManageNumbersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455ABAD56F0C54223BD2D4FF /* ManageNumbersSheet.swift */; };
 		8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */; };
 		8649F4D865399A08D7CA252D /* InstagramParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65EF6731704E9880F075B65 /* InstagramParser.swift */; };
@@ -47,6 +49,7 @@
 		8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */; };
 		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
+		A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */; };
 		AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49769C57E302C878CA2D9504 /* NotesCard.swift */; };
 		ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDBFA499148B60BFA2226E /* CallLogService.swift */; };
 		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
@@ -74,6 +77,7 @@
 /* Begin PBXFileReference section */
 		09D52C21D68CDF154303127E /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		0B4DA5F2B41378E912C05E57 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualInsightsCard.swift; sourceTree = "<group>"; };
 		10CCED8EAD9BA47741F4E10F /* CallLogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogCard.swift; sourceTree = "<group>"; };
 		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
 		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,11 +93,13 @@
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppParser.swift; sourceTree = "<group>"; };
+		76442B773CEB771984FD36B8 /* YearWrappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearWrappedView.swift; sourceTree = "<group>"; };
 		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
 		7CF5FF9C7E4190A0C412D835 /* RelationshipAnalytics-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RelationshipAnalytics-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouStartCard.swift; sourceTree = "<group>"; };
 		87C06589087958EE60502677 /* RelationshipAnalytics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RelationshipAnalytics.entitlements; sourceTree = "<group>"; };
 		887613950A0A64098EA4CB3C /* MessengerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerParser.swift; sourceTree = "<group>"; };
+		90EBD2CA7D1597A1D145F43D /* RelationshipDNAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipDNAView.swift; sourceTree = "<group>"; };
 		99F8EF9644FAD5E60835221A /* CallTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallTimeCard.swift; sourceTree = "<group>"; };
 		9A95F46592433559B2F00B38 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		A369835231B408935C0FAA75 /* CloudKitSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncService.swift; sourceTree = "<group>"; };
@@ -224,9 +230,12 @@
 				49769C57E302C878CA2D9504 /* NotesCard.swift */,
 				CDAE3079E77A0AF185DE111A /* PhotosTogetherCard.swift */,
 				1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */,
+				90EBD2CA7D1597A1D145F43D /* RelationshipDNAView.swift */,
 				3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */,
 				C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */,
+				0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */,
 				E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */,
+				76442B773CEB771984FD36B8 /* YearWrappedView.swift */,
 				82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */,
 			);
 			path = ContactDetail;
@@ -450,11 +459,14 @@
 				BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */,
 				71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */,
 				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
+				7FFEB4F1EFA4C80C5EA9E41F /* RelationshipDNAView.swift in Sources */,
 				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
 				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
 				7091823F1EE30B7D56DCAA5C /* TwitterParser.swift in Sources */,
+				A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */,
 				4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */,
 				57DB6E50490798223E562103 /* WhatsAppParser.swift in Sources */,
+				2BB1419DF5D6FF0BBFBCEC56 /* YearWrappedView.swift in Sources */,
 				C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

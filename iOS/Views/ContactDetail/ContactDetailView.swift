@@ -16,6 +16,12 @@ struct ContactDetailView: View {
                 VStack(spacing: AppTheme.sectionSpacing) {
                     HeaderView(contact: contact)
 
+                    VisualInsightsCard(
+                        stats: messageStats,
+                        callStats: callStats,
+                        contactName: contact.name
+                    )
+
                     NotesCard(notes: [], contactId: contact.id)
 
                     SentReceivedCard(stats: messageStats)
