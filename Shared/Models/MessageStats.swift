@@ -16,6 +16,7 @@ struct MessageStats: Codable {
     let firstMessageReceived: MessagePreview?
     let messagesEdited: Int
     let messagesUnsent: Int
+    let voiceMessages: VoiceMessageStats?
 
     var sentPercentage: Double {
         guard totalMessages > 0 else { return 0 }
@@ -92,6 +93,38 @@ struct ConversationInfo: Codable {
         let start = formatter.string(from: startDate)
         let end = formatter.string(from: endDate) + yearFormatter.string(from: endDate)
         return "\(start)-\(end)"
+    }
+}
+
+struct VoiceMessageStats: Codable {
+    let sentCount: Int
+    let receivedCount: Int
+    let totalDuration: TimeInterval
+    let averageDuration: TimeInterval
+    let longestDuration: TimeInterval
+    let contactPhoneNumber: String?
+
+    var totalCount: Int { sentCount + receivedCount }
+
+    var totalDurationFormatted: String {
+        formatTime(totalDuration)
+    }
+
+    var averageDurationFormatted: String {
+        formatTime(averageDuration)
+    }
+
+    var longestDurationFormatted: String {
+        formatTime(longestDuration)
+    }
+
+    private func formatTime(_ interval: TimeInterval) -> String {
+        let minutes = Int(interval) / 60
+        let seconds = Int(interval) % 60
+        if minutes > 0 {
+            return "\(minutes)m \(seconds)s"
+        }
+        return "\(seconds)s"
     }
 }
 

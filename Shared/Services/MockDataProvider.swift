@@ -43,7 +43,15 @@ enum MockDataProvider {
         ),
         firstMessageReceived: nil,
         messagesEdited: 14,
-        messagesUnsent: 3
+        messagesUnsent: 3,
+        voiceMessages: VoiceMessageStats(
+            sentCount: 12,
+            receivedCount: 8,
+            totalDuration: 272,      // 4m 32s
+            averageDuration: 13.6,   // ~14s
+            longestDuration: 45,     // 45s
+            contactPhoneNumber: "+1 (555) 123-4567"
+        )
     )
 
     static let callStats = CallStats(

@@ -79,6 +79,9 @@ final class MessageDatabaseService {
         let replyTimes = try calculateReplyTimes(handleRowId: handleRowId)
         let longestConvo = try findLongestConversation(handleRowId: handleRowId)
         let firstMessage = try fetchFirstMessage(handleRowId: handleRowId)
+        let edited = try countEditedMessages(handleRowId: handleRowId)
+        let unsent = try countUnsentMessages(handleRowId: handleRowId)
+        let voiceStats = try fetchVoiceMessageStats(handleRowId: handleRowId)
 
         return MessageStats(
             contactId: handleId,
@@ -93,7 +96,10 @@ final class MessageDatabaseService {
             theirReplyTime: replyTimes.theirs,
             longestConvo: longestConvo,
             firstMessageSent: firstMessage,
-            firstMessageReceived: nil
+            firstMessageReceived: nil,
+            messagesEdited: edited,
+            messagesUnsent: unsent,
+            voiceMessages: voiceStats
         )
     }
 
@@ -317,6 +323,91 @@ final class MessageDatabaseService {
             )
         }
         return results.first
+    }
+
+    private func countEditedMessages(handleRowId: Int64) throws -> Int {
+        // In iMessage, edited messages have a non-null message_summary_info
+        // and the edit history is tracked
+        let sql = """
+            SELECT COUNT(*) FROM message
+            WHERE handle_id = ?
+            AND is_from_me = 1
+            AND message_summary_info IS NOT NULL
+            AND length(message_summary_info) > 0
+        """
+        let results: [Int] = try query(sql, bind: { stmt in
+            sqlite3_bind_int64(stmt, 1, handleRowId)
+        }) { stmt in
+            Int(sqlite3_column_int(stmt, 0))
+        }
+        return results.first ?? 0
+    }
+
+    private func countUnsentMessages(handleRowId: Int64) throws -> Int {
+        // Unsent messages in iMessage have date_retracted set
+        let sql = """
+            SELECT COUNT(*) FROM message
+            WHERE handle_id = ?
+            AND is_from_me = 1
+            AND date_retracted > 0
+        """
+        let results: [Int] = try query(sql, bind: { stmt in
+            sqlite3_bind_int64(stmt, 1, handleRowId)
+        }) { stmt in
+            Int(sqlite3_column_int(stmt, 0))
+        }
+        return results.first ?? 0
+    }
+
+    private func fetchVoiceMessageStats(handleRowId: Int64) throws -> VoiceMessageStats? {
+        // Voice messages are stored as attachments with mime_type 'audio/amr'
+        // or uti 'com.apple.coreaudio-format' in the attachment table
+        let sql = """
+            SELECT
+                m.is_from_me,
+                a.total_bytes,
+                COALESCE(a.transfer_name, '') as filename
+            FROM message m
+            JOIN message_attachment_join maj ON maj.message_id = m.ROWID
+            JOIN attachment a ON a.ROWID = maj.attachment_id
+            WHERE m.handle_id = ?
+            AND (
+                a.mime_type LIKE 'audio/%'
+                OR a.uti = 'com.apple.coreaudio-format'
+                OR a.transfer_name LIKE '%.caf'
+                OR a.transfer_name LIKE '%.amr'
+            )
+        """
+        let results: [(isFromMe: Bool, bytes: Int64, filename: String)] = try query(sql, bind: { stmt in
+            sqlite3_bind_int64(stmt, 1, handleRowId)
+        }) { stmt in
+            (
+                sqlite3_column_int(stmt, 0) == 1,
+                sqlite3_column_int64(stmt, 1),
+                columnText(stmt, 2)
+            )
+        }
+
+        guard !results.isEmpty else { return nil }
+
+        let sent = results.filter { $0.isFromMe }.count
+        let received = results.filter { !$0.isFromMe }.count
+
+        // Estimate duration from file size (~1600 bytes/second for AMR audio)
+        let bytesPerSecond: Double = 1600
+        let durations = results.map { Double($0.bytes) / bytesPerSecond }
+        let totalDuration = durations.reduce(0, +)
+        let avgDuration = totalDuration / Double(results.count)
+        let longestDuration = durations.max() ?? 0
+
+        return VoiceMessageStats(
+            sentCount: sent,
+            receivedCount: received,
+            totalDuration: totalDuration,
+            averageDuration: avgDuration,
+            longestDuration: longestDuration,
+            contactPhoneNumber: nil
+        )
     }
 
     // MARK: - SQLite Utilities

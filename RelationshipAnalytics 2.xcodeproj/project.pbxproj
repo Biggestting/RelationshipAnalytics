@@ -17,10 +17,8 @@
 		2A8A98DB1C87A43BA6D1B1C5 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
 		31DE929232A5FCF2C915509A /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
 		3E4A20F112D061ED29FBFF1C /* ActiveStreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */; };
-		4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */; };
 		4FB7F536DB21623876599497 /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5FFF954A466568E403B6E /* MacContentView.swift */; };
 		53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F314ECB9199FFB80DD1DC /* GlassCard.swift */; };
-		532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325474B42653B4117114EB8 /* EditedUnsentCard.swift */; };
 		5DF56FAA067A78F108A5916C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		66932C276C06E10F9AD117C5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D52C21D68CDF154303127E /* AppTheme.swift */; };
 		6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */; };
@@ -59,7 +57,6 @@
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
 		3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTimeCard.swift; sourceTree = "<group>"; };
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
-		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BE26E529B223C3D3E1F57AF /* ContactNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNote.swift; sourceTree = "<group>"; };
@@ -83,7 +80,6 @@
 		D61F314ECB9199FFB80DD1DC /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActivityHeatmap.swift; sourceTree = "<group>"; };
 		E81825180D2635DAF76A7CA1 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
-		E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagesCard.swift; sourceTree = "<group>"; };
 		ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMessagesCard.swift; sourceTree = "<group>"; };
 		F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		FCD5FFF954A466568E403B6E /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
@@ -173,7 +169,6 @@
 				C0F4C073E5D84C3B6684925B /* ActiveStreakCard.swift */,
 				99F8EF9644FAD5E60835221A /* CallTimeCard.swift */,
 				C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */,
-				5325474B42653B4117114EB8 /* EditedUnsentCard.swift */,
 				ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */,
 				0B4DA5F2B41378E912C05E57 /* HeaderView.swift */,
 				AB7340CD645540A8206811A2 /* LongestConvoCard.swift */,
@@ -182,7 +177,6 @@
 				1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */,
 				3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */,
 				C2B13B57D95BF6B3DA58926A /* SentReceivedCard.swift */,
-				E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */,
 				82A3559D7F3D1011984B4BC7 /* YouStartCard.swift */,
 			);
 			path = ContactDetail;
@@ -323,6 +317,7 @@
 				};
 			};
 			buildConfigurationList = CEBD4F9F89AB17443728015D /* Build configuration list for PBXProject "RelationshipAnalytics" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -332,7 +327,6 @@
 			mainGroup = 1D2770F5840B290F42FBDDB7;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 0C0E0264C9D34211C6BE405B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -357,7 +351,6 @@
 				6FCBBB4C9D0023D13F2DC7E0 /* ContactListView.swift in Sources */,
 				73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */,
 				E0C8728B8C15699590CE26A7 /* ContentView.swift in Sources */,
-				532CED7DA8C960F169E9A852 /* EditedUnsentCard.swift in Sources */,
 				F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */,
 				53008B04048A23EE79CE9342 /* GlassCard.swift in Sources */,
 				9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */,
@@ -372,7 +365,6 @@
 				CB3B1FA1C4114D231A0FA51E /* RelationshipAnalyticsApp.swift in Sources */,
 				70900AAEEC8A552301C004A1 /* ReplyTimeCard.swift in Sources */,
 				00DB8FBFED63496B30DC1AD2 /* SentReceivedCard.swift in Sources */,
-				4B80AF235591D643BA07A488 /* VoiceMessagesCard.swift in Sources */,
 				C9DD66CD0CC3D3DB80E9B8BB /* YouStartCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,6 +36,8 @@ struct ContactDetailView: View {
 
                     ReplyTimeCard(stats: messageStats, contactName: contact.name)
 
+                    VoiceMessagesCard(stats: messageStats.voiceMessages)
+
                     CallTimeCard(callStats: callStats)
 
                     RankOverTimeCard(rankData: rankData)
