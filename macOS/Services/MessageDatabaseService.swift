@@ -54,13 +54,15 @@ final class MessageDatabaseService {
             let name = displayId.isEmpty ? identifier : displayId
             let initials = String(name.prefix(1)).uppercased()
 
+            let idType: ContactIdentifier.IdentifierType = identifier.contains("@") ? .email : .phone
             return ContactProfile(
                 id: handleId,
                 name: name,
                 initials: initials,
                 talkingSince: firstDate,
-                phoneNumber: identifier.contains("@") ? nil : identifier,
-                email: identifier.contains("@") ? identifier : nil
+                identifiers: [
+                    ContactIdentifier(value: identifier, type: idType, label: nil, addedDate: firstDate)
+                ]
             )
         }
     }

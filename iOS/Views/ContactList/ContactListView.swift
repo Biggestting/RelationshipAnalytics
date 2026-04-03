@@ -43,8 +43,7 @@ struct ContactListView: View {
                                 name: imported.contactName,
                                 initials: String(imported.contactName.prefix(1)).uppercased(),
                                 talkingSince: imported.dateRange?.start ?? Date(),
-                                phoneNumber: nil,
-                                email: nil
+                                identifiers: []
                             )
                             NavigationLink {
                                 ContactDetailView(
@@ -185,9 +184,23 @@ struct ContactRow: View {
                     .font(.system(size: 14, weight: .semibold, design: .monospaced))
                     .foregroundStyle(AppTheme.textPrimary)
 
-                Text(contact.talkingSinceFormatted.uppercased())
-                    .font(AppTheme.caption)
-                    .foregroundStyle(AppTheme.textMuted)
+                HStack(spacing: 6) {
+                    Text(contact.talkingSinceFormatted.uppercased())
+                        .font(AppTheme.caption)
+                        .foregroundStyle(AppTheme.textMuted)
+
+                    if contact.identifiers.count > 1 {
+                        Text("\(contact.identifiers.count) NUMBERS")
+                            .font(.system(size: 8, weight: .medium, design: .monospaced))
+                            .foregroundStyle(AppTheme.textMuted)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 1)
+                            .background(
+                                RoundedRectangle(cornerRadius: 2)
+                                    .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
+                            )
+                    }
+                }
             }
 
             Spacer()

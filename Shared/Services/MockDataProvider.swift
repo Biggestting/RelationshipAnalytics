@@ -7,16 +7,27 @@ enum MockDataProvider {
         name: "Nina",
         initials: "N",
         talkingSince: dateFrom("2025-02-01"),
-        phoneNumber: "+1 (555) 123-4567",
-        email: "nina@example.com"
+        identifiers: [
+            ContactIdentifier(value: "+1 (555) 123-4567", type: .phone, label: "Personal", addedDate: dateFrom("2025-02-01")),
+            ContactIdentifier(value: "+1 (555) 987-6543", type: .phone, label: "Old Number", addedDate: dateFrom("2024-08-15")),
+            ContactIdentifier(value: "nina@example.com", type: .email, label: nil, addedDate: dateFrom("2025-02-01")),
+        ]
     )
 
     static let contacts: [ContactProfile] = [
         contact,
-        ContactProfile(id: "contact_002", name: "Alex", initials: "A", talkingSince: dateFrom("2024-06-15"), phoneNumber: nil, email: nil),
-        ContactProfile(id: "contact_003", name: "Jordan", initials: "J", talkingSince: dateFrom("2023-11-20"), phoneNumber: nil, email: nil),
-        ContactProfile(id: "contact_004", name: "Sam", initials: "S", talkingSince: dateFrom("2025-01-10"), phoneNumber: nil, email: nil),
-        ContactProfile(id: "contact_005", name: "Riley", initials: "R", talkingSince: dateFrom("2024-03-05"), phoneNumber: nil, email: nil),
+        ContactProfile(id: "contact_002", name: "Alex", initials: "A", talkingSince: dateFrom("2024-06-15"), identifiers: [
+            ContactIdentifier(value: "+1 (555) 222-3333", type: .phone, label: nil, addedDate: dateFrom("2024-06-15"))
+        ]),
+        ContactProfile(id: "contact_003", name: "Jordan", initials: "J", talkingSince: dateFrom("2023-11-20"), identifiers: [
+            ContactIdentifier(value: "+1 (555) 444-5555", type: .phone, label: nil, addedDate: dateFrom("2023-11-20"))
+        ]),
+        ContactProfile(id: "contact_004", name: "Sam", initials: "S", talkingSince: dateFrom("2025-01-10"), identifiers: [
+            ContactIdentifier(value: "+1 (555) 666-7777", type: .phone, label: nil, addedDate: dateFrom("2025-01-10"))
+        ]),
+        ContactProfile(id: "contact_005", name: "Riley", initials: "R", talkingSince: dateFrom("2024-03-05"), identifiers: [
+            ContactIdentifier(value: "+1 (555) 888-9999", type: .phone, label: nil, addedDate: dateFrom("2024-03-05"))
+        ]),
     ]
 
     static let messageStats = MessageStats(

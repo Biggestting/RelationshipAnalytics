@@ -61,13 +61,16 @@ final class CloudKitSyncService {
         for (_, result) in results.matchResults {
             guard let record = try? result.get() else { continue }
 
+            var identifiers: [ContactIdentifier] = []
+            if let phone = record["phoneNumber"] as? String {
+                identifiers.append(ContactIdentifier(value: phone, type: .phone, label: nil, addedDate: record["talkingSince"] as? Date ?? Date()))
+            }
             let contact = ContactProfile(
                 id: record.recordID.recordName,
                 name: record["name"] as? String ?? "Unknown",
                 initials: record["initials"] as? String ?? "?",
                 talkingSince: record["talkingSince"] as? Date ?? Date(),
-                phoneNumber: record["phoneNumber"] as? String,
-                email: nil
+                identifiers: identifiers
             )
 
             let messageStats: MessageStats? = {

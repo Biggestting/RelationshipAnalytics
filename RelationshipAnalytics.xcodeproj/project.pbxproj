@@ -40,6 +40,7 @@
 		71A6C625BC1211D391AFF57E /* RankOverTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */; };
 		73E47CD8806230E12EE13178 /* ContactNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE26E529B223C3D3E1F57AF /* ContactNote.swift */; };
 		7FD9C9D0851E6F336C3170A1 /* MessageDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */; };
+		801379D7BDCA25405079A7FB /* ManageNumbersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455ABAD56F0C54223BD2D4FF /* ManageNumbersSheet.swift */; };
 		8144A640111FB1A8DDAB06DA /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */; };
 		8649F4D865399A08D7CA252D /* InstagramParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65EF6731704E9880F075B65 /* InstagramParser.swift */; };
 		881409DF94AE83A1042D914C /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E88825670790104C2BFFAC /* ImportManager.swift */; };
@@ -80,6 +81,7 @@
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
 		34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedCallsCard.swift; sourceTree = "<group>"; };
 		3C82B0E3504AB143366C0415 /* ReplyTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTimeCard.swift; sourceTree = "<group>"; };
+		455ABAD56F0C54223BD2D4FF /* ManageNumbersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNumbersSheet.swift; sourceTree = "<group>"; };
 		48359B73090053D54A08150E /* ImportedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedMessage.swift; sourceTree = "<group>"; };
 		49769C57E302C878CA2D9504 /* NotesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCard.swift; sourceTree = "<group>"; };
 		5325474B42653B4117114EB8 /* EditedUnsentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditedUnsentCard.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */,
 				0B4DA5F2B41378E912C05E57 /* HeaderView.swift */,
 				AB7340CD645540A8206811A2 /* LongestConvoCard.swift */,
+				455ABAD56F0C54223BD2D4FF /* ManageNumbersSheet.swift */,
 				B9784B9A744094D994914F30 /* MessageActivityDetailView.swift */,
 				E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */,
 				34E80D8DCF053CF83561C8F0 /* MissedCallsCard.swift */,
@@ -435,6 +438,7 @@
 				BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */,
 				E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */,
 				E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */,
+				801379D7BDCA25405079A7FB /* ManageNumbersSheet.swift in Sources */,
 				4F6E89328AD6E0AB6720006F /* MessageActivityDetailView.swift in Sources */,
 				1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */,
 				C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */,
