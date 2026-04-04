@@ -60,6 +60,7 @@
 		AB2D59E681CFED5E1A5EAB27 /* NotesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49769C57E302C878CA2D9504 /* NotesCard.swift */; };
 		ABA36F96FA80674A2F173B96 /* CallLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDBFA499148B60BFA2226E /* CallLogService.swift */; };
 		BC8EF6BB57E506ABB122D925 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28E107A1E124AC60C26C62 /* RankData.swift */; };
+		BD66FB724D9F028A119354C0 /* CloudKitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B21DC3CB34445A221B90C2 /* CloudKitFetcher.swift */; };
 		BED962B03820E1FBF8F4D7BC /* ImportedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48359B73090053D54A08150E /* ImportedMessage.swift */; };
 		C5AA7F903E8876A2139DF79F /* MessageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F89D8100E35B4B029FDC6 /* MessageStats.swift */; };
 		C88839F7D1B3DEC965A9F4F5 /* RAShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239628B6D327FEE3719E1265 /* RAShortcutsProvider.swift */; };
@@ -108,6 +109,7 @@
 		59963A65BD7C3B18B4014303 /* MessageTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTracker.swift; sourceTree = "<group>"; };
 		5EB229CE6935667A32DEAD38 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		684E431D3F03099B3886B67E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71B21DC3CB34445A221B90C2 /* CloudKitFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitFetcher.swift; sourceTree = "<group>"; };
 		73B6D01157C8C86834944CD8 /* WhatsAppParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppParser.swift; sourceTree = "<group>"; };
 		76442B773CEB771984FD36B8 /* YearWrappedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearWrappedView.swift; sourceTree = "<group>"; };
 		769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsIntegration.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				1393E363442B08FFEF24E965 /* AutoSyncManager.swift */,
 				B8F0356D6919862D7CFC4A77 /* CallTracker.swift */,
+				71B21DC3CB34445A221B90C2 /* CloudKitFetcher.swift */,
 				8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */,
 				59963A65BD7C3B18B4014303 /* MessageTracker.swift */,
 				769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */,
@@ -486,6 +489,7 @@
 				CA0542E027362DC747973274 /* CallStats.swift in Sources */,
 				09513863534A1021F714A22F /* CallTimeCard.swift in Sources */,
 				D810974F5CB62BA4DD0FA786 /* CallTracker.swift in Sources */,
+				BD66FB724D9F028A119354C0 /* CloudKitFetcher.swift in Sources */,
 				F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */,
 				DBC688F96A38441C1766CAED /* Contact.swift in Sources */,
 				8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */,

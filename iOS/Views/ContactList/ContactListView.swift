@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContactListView: View {
     let contacts: [ContactProfile]
+    var cloudKitBundles: [ContactAnalyticsBundle] = []
     @EnvironmentObject var appearanceManager: AppearanceManager
     @State private var showAppearancePicker = false
     @State private var showImport = false
@@ -10,7 +11,7 @@ struct ContactListView: View {
     @State private var shortcutsImports: [String: ShortcutsImportEntry] = [:]
 
     private var hasAnyData: Bool {
-        !contacts.isEmpty || !importedChats.isEmpty || !shortcutsImports.isEmpty
+        !contacts.isEmpty || !importedChats.isEmpty || !shortcutsImports.isEmpty || !cloudKitBundles.isEmpty
     }
 
     var body: some View {
@@ -19,6 +20,28 @@ struct ContactListView: View {
 
             ScrollView {
                 LazyVStack(spacing: 2) {
+                    // CloudKit-synced contacts (from macOS companion)
+                    if !cloudKitBundles.isEmpty {
+                        Text("SYNCED FROM MAC")
+                            .font(AppTheme.caption)
+                            .foregroundStyle(AppTheme.textMuted)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 4)
+
+                        ForEach(cloudKitBundles) { bundle in
+                            NavigationLink {
+                                ContactDetailView(
+                                    contact: bundle.contact,
+                                    messageStats: bundle.messageStats,
+                                    callStats: bundle.callStats,
+                                    rankData: bundle.rankData
+                                )
+                            } label: {
+                                ContactRow(contact: bundle.contact)
+                            }
+                        }
+                    }
+
                     // Shortcuts-imported iMessage contacts
                     if !shortcutsImports.isEmpty {
                         Text("IMESSAGE")
@@ -508,7 +531,7 @@ struct ImportedContactRow: View {
 
 #Preview {
     NavigationStack {
-        ContactListView(contacts: [])
+        ContactListView(contacts: [], cloudKitBundles: [])
             .environmentObject(AppearanceManager())
     }
 }
