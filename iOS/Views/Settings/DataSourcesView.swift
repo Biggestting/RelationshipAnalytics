@@ -58,9 +58,18 @@ struct DataSourcesView: View {
                                     Spacer()
 
                                     Button {
-                                        Task { await syncManager.performSync(source: "manual") }
+                                        if syncManager.shortcutInstalled {
+                                            Task { await syncManager.performSync(source: "manual") }
+                                        } else {
+                                            // No shortcut installed — guide user
+                                            syncManager.syncStatus = "SET UP SHORTCUT FIRST (SEE BELOW)"
+                                        }
                                     } label: {
-                                        Text("SYNC NOW")
+                                        HStack(spacing: 4) {
+                                            Image(systemName: syncManager.shortcutInstalled ? "arrow.triangle.2.circlepath" : "exclamationmark.triangle")
+                                                .font(.system(size: 8))
+                                            Text(syncManager.shortcutInstalled ? "SYNC NOW" : "SETUP NEEDED")
+                                        }
                                             .font(.system(size: 10, weight: .medium, design: .monospaced))
                                             .foregroundStyle(AppTheme.textSecondary)
                                             .padding(.horizontal, 10)
@@ -106,12 +115,12 @@ struct DataSourcesView: View {
                                 Rectangle().fill(AppTheme.divider).frame(height: 1)
 
                                 VStack(alignment: .leading, spacing: 6) {
-                                    AutomationStep(number: 1, text: "OPEN SHORTCUTS APP → AUTOMATION TAB")
-                                    AutomationStep(number: 2, text: "TAP + → PERSONAL AUTOMATION")
-                                    AutomationStep(number: 3, text: "CHOOSE 'APP' → SELECT 'MESSAGES' → 'IS OPENED'")
-                                    AutomationStep(number: 4, text: "ADD ACTION → SEARCH 'RELATIONSHIP ANALYTICS'")
-                                    AutomationStep(number: 5, text: "SELECT 'IMPORT MESSAGES' ACTION")
-                                    AutomationStep(number: 6, text: "TURN OFF 'ASK BEFORE RUNNING' → DONE")
+                                    AutomationStep(number: 1, text: "OPEN SHORTCUTS APP → TAP + TO CREATE NEW SHORTCUT")
+                                    AutomationStep(number: 2, text: "ADD ACTION: 'FIND MESSAGES' (NO FILTER — GETS ALL CONTACTS)")
+                                    AutomationStep(number: 3, text: "ADD 'REPEAT WITH EACH' → INSIDE ADD 'TEXT' WITH:\n{\"sender\":\"[SENDER]\",\"text\":\"[TEXT]\",\"date\":\"[DATE SENT]\",\"is_from_me\":[IS FROM ME]}")
+                                    AutomationStep(number: 4, text: "AFTER REPEAT: ADD 'COMBINE TEXT' (COMMA) → THEN 'TEXT': [ + COMBINED + ]")
+                                    AutomationStep(number: 5, text: "ADD 'IMPORT MESSAGES' (FROM RELATIONSHIP ANALYTICS) → SET JSON TO THE TEXT")
+                                    AutomationStep(number: 6, text: "NAME IT 'EXPORT MESSAGES TO RA' → DONE\nRUN IT ONCE TO IMPORT ALL CONTACTS AT ONCE")
                                 }
 
                                 Button {

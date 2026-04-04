@@ -12,6 +12,10 @@ final class AutoSyncManager: ObservableObject {
     static let shared = AutoSyncManager()
     static let backgroundTaskID = "com.relationshipanalytics.refresh"
 
+    /// URL scheme that triggers the import Shortcut
+    /// The user's Shortcut should be named "Export Messages to RA"
+    private let shortcutRunURL = "shortcuts://run-shortcut?name=Export%20Messages%20to%20RA"
+
     @Published var lastSyncDate: Date? {
         didSet {
             if let date = lastSyncDate {
@@ -29,17 +33,22 @@ final class AutoSyncManager: ObservableObject {
             }
         }
     }
+    @Published var shortcutInstalled: Bool {
+        didSet {
+            UserDefaults.standard.set(shortcutInstalled, forKey: "shortcutInstalled")
+        }
+    }
 
-    private let staleDuration: TimeInterval = 4 * 3600 // 4 hours
+    private let staleDuration: TimeInterval = 4 * 3600
 
     private init() {
         self.lastSyncDate = UserDefaults.standard.object(forKey: "lastAutoSync") as? Date
         self.autoSyncEnabled = UserDefaults.standard.bool(forKey: "autoSyncEnabled")
+        self.shortcutInstalled = UserDefaults.standard.bool(forKey: "shortcutInstalled")
     }
 
     // MARK: - Background App Refresh
 
-    /// Call from app launch to register the background task
     func registerBackgroundTask() {
         BGTaskScheduler.shared.register(
             forTaskWithIdentifier: Self.backgroundTaskID,
@@ -55,7 +64,7 @@ final class AutoSyncManager: ObservableObject {
 
     func scheduleBackgroundRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: Self.backgroundTaskID)
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 3600) // earliest: 1 hour from now
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 3600)
         do {
             try BGTaskScheduler.shared.submit(request)
         } catch {
@@ -64,16 +73,13 @@ final class AutoSyncManager: ObservableObject {
     }
 
     private func handleBackgroundRefresh(_ task: BGAppRefreshTask) {
-        // Schedule next refresh
         scheduleBackgroundRefresh()
 
         let syncTask = Task {
             await performSync(source: "background")
         }
 
-        task.expirationHandler = {
-            syncTask.cancel()
-        }
+        task.expirationHandler = { syncTask.cancel() }
 
         Task {
             await syncTask.value
@@ -83,18 +89,17 @@ final class AutoSyncManager: ObservableObject {
 
     // MARK: - Foreground Sync
 
-    /// Call when app enters foreground — syncs if data is stale
     func syncIfNeeded() {
         guard autoSyncEnabled else { return }
 
-        let isStale: Bool
+        let isCurrentlyStale: Bool
         if let lastSync = lastSyncDate {
-            isStale = Date().timeIntervalSince(lastSync) > staleDuration
+            isCurrentlyStale = Date().timeIntervalSince(lastSync) > staleDuration
         } else {
-            isStale = true
+            isCurrentlyStale = true
         }
 
-        if isStale {
+        if isCurrentlyStale {
             Task { await performSync(source: "foreground") }
         }
     }
@@ -107,26 +112,38 @@ final class AutoSyncManager: ObservableObject {
         isSyncing = true
         syncStatus = "SYNCING (\(source.uppercased()))..."
 
-        // Re-run any Shortcuts-imported contacts to check for new messages
-        // The App Intent will be triggered by the Shortcuts Automation
-        // Here we just mark the sync time and update status
+        #if canImport(UIKit)
+        if shortcutInstalled, source == "manual" {
+            // Launch the Shortcuts app to run our import Shortcut
+            syncStatus = "LAUNCHING SHORTCUT..."
+            if let url = URL(string: shortcutRunURL) {
+                await UIApplication.shared.open(url)
+            }
+            // The Shortcut will call back via our App Intent or URL scheme
+            // when it finishes, triggering data reload
+            try? await Task.sleep(nanoseconds: 2_000_000_000) // wait 2s for shortcut to start
+            syncStatus = "SHORTCUT RUNNING — SWITCH BACK WHEN DONE"
+            isSyncing = false
+            return
+        }
+        #endif
 
-        // Check if we have any Shortcuts imports to refresh
+        // For background/foreground auto-sync, just update tracked data
         let imports = LiveDataStore.shared.getAllShortcutsImports()
-        if !imports.isEmpty {
-            syncStatus = "PROCESSING \(imports.count) CONTACTS..."
-            // The actual re-import happens via the Shortcuts Automation
-            // We just record that we're ready for fresh data
+        let calls = LiveDataStore.shared.getAllCalls()
+        let messageCounts = LiveDataStore.shared.getAllMessageCounts()
+
+        if !imports.isEmpty || !calls.isEmpty || !messageCounts.isEmpty {
+            syncStatus = "\(imports.count) CONTACTS · \(calls.count) CALLS"
+        } else {
+            syncStatus = "NO DATA YET — IMPORT FIRST"
         }
 
-        // Update tracked call data
-        let calls = LiveDataStore.shared.getAllCalls()
-        syncStatus = "\(calls.count) CALLS TRACKED"
-
-        // Mark sync complete
         lastSyncDate = Date()
         isSyncing = false
-        syncStatus = "LAST SYNC: \(formattedSyncDate)"
+        syncStatus = imports.isEmpty && calls.isEmpty
+            ? "NO DATA YET — SET UP SHORTCUTS IMPORT"
+            : "LAST SYNC: \(formattedSyncDate)"
     }
 
     // MARK: - Helpers
