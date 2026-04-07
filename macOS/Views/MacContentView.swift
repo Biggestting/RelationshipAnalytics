@@ -103,7 +103,7 @@ struct MacContentView: View {
                                     .foregroundStyle(syncManager.syncProgress.contains("complete") ? Color.green : AppTheme.textSecondary)
                             }
 
-                            if let lastSync = syncManager.lastSync {
+                            if syncManager.lastSync != nil {
                                 Text("LAST SYNC: \(syncManager.lastSyncFormatted)")
                                     .font(.system(size: 9, design: .monospaced))
                                     .foregroundStyle(AppTheme.textMuted)

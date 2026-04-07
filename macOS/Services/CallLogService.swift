@@ -97,7 +97,7 @@ final class CallLogService {
             let answered = sqlite3_column_int(stmt, 2) == 1
             let originated = sqlite3_column_int(stmt, 3) == 1
             let callType = sqlite3_column_int(stmt, 4)
-            let provider = columnText(stmt, 5)
+            let provider = stmt.map { columnText($0, 5) } ?? ""
 
             let date = Date(timeIntervalSinceReferenceDate: timestamp)
             let direction: CallRecord.CallDirection = originated ? .outgoing : .incoming
