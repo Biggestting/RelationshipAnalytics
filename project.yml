@@ -61,6 +61,7 @@ targets:
       path: macOS/Info.plist
       properties:
         LSUIElement: false
+        NSContactsUsageDescription: "Access your contacts to show names instead of phone numbers"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.macos

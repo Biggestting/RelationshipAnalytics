@@ -54,6 +54,7 @@
 		8828681762D425689B56BDC4 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6607B15186EC04DAA0484 /* ContactDetailView.swift */; };
 		8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB229CE6935667A32DEAD38 /* Contact.swift */; };
 		9D9021BB8F028580A85C0420 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95F46592433559B2F00B38 /* GradientBackground.swift */; };
+		A22047FEC4DA22213D44C2C4 /* ContactNameResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EE4797199A6D34D6324BE /* ContactNameResolver.swift */; };
 		A4319CD5432E39D338DB9741 /* VisualInsightsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D9C04121CD5A8AF52DC56 /* VisualInsightsCard.swift */; };
 		A7405072D65F443AD0FB66CB /* MessageTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59963A65BD7C3B18B4014303 /* MessageTracker.swift */; };
 		AA9ADCD0C8961EF870E74FDC /* DataSourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062D6400659C7FA683869507 /* DataSourcesView.swift */; };
@@ -94,7 +95,7 @@
 		1393E363442B08FFEF24E965 /* AutoSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSyncManager.swift; sourceTree = "<group>"; };
 		15D52D80D6869656AA901F1D /* EmojiStatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStatsCard.swift; sourceTree = "<group>"; };
 		1EA3689B28B88D39EFA6408E /* RankOverTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankOverTimeCard.swift; sourceTree = "<group>"; };
-		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F8A14A2F1334871D07E5909 /* RelationshipAnalytics-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "RelationshipAnalytics-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		239628B6D327FEE3719E1265 /* RAShortcutsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAShortcutsProvider.swift; sourceTree = "<group>"; };
 		259AAABAAC933E1F9A96D7FB /* RelationshipAnalyticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipAnalyticsApp.swift; sourceTree = "<group>"; };
 		30394B7F62AD2FDEA02F9D90 /* CallStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStats.swift; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		F65EF6731704E9880F075B65 /* InstagramParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramParser.swift; sourceTree = "<group>"; };
 		F9B74FD6DB0A46AE004CE37C /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		FCD5FFF954A466568E403B6E /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
+		FF7EE4797199A6D34D6324BE /* ContactNameResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNameResolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -388,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				B5FDBFA499148B60BFA2226E /* CallLogService.swift */,
+				FF7EE4797199A6D34D6324BE /* ContactNameResolver.swift */,
 				BA1DB6C9CECBDC562E3E8DDA /* MessageDatabaseService.swift */,
 				E81825180D2635DAF76A7CA1 /* RankingService.swift */,
 			);
@@ -446,6 +449,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					9F2B9DE9D4E0DD575A84802D = {
+						DevelopmentTeam = "";
+					};
+					A331987C59D93B4E82F0AD63 = {
+						DevelopmentTeam = "";
+					};
+				};
 			};
 			buildConfigurationList = CEBD4F9F89AB17443728015D /* Build configuration list for PBXProject "RelationshipAnalytics" */;
 			developmentRegion = en;
@@ -540,6 +551,7 @@
 				E96D30A553462B16E7F5E390 /* CallStats.swift in Sources */,
 				196B3867F77DFCAAE294B25F /* CloudKitSyncService.swift in Sources */,
 				8898E5650324BAC2D1DE8774 /* Contact.swift in Sources */,
+				A22047FEC4DA22213D44C2C4 /* ContactNameResolver.swift in Sources */,
 				D7080A28CBA6CB2592E6971D /* ContactNote.swift in Sources */,
 				5A3B4C467ACC0F7A2302150A /* ImportManager.swift in Sources */,
 				D40F625988A7625FAB06F048 /* ImportedMessage.swift in Sources */,
@@ -566,10 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 62WTYVKC3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -577,7 +586,6 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.macos;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -587,7 +595,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 62WTYVKC3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -605,7 +612,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 62WTYVKC3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -744,10 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = macOS/RelationshipAnalytics.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 62WTYVKC3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -755,7 +758,6 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.relationshipanalytics.macos;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;

@@ -20,5 +20,7 @@
 	<string>1</string>
 	<key>LSUIElement</key>
 	<false/>
+	<key>NSContactsUsageDescription</key>
+	<string>Access your contacts to show names instead of phone numbers</string>
 </dict>
 </plist>

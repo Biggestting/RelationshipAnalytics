@@ -32,39 +32,105 @@ final class MessageDatabaseService {
 
     // MARK: - Queries
 
-    /// Get all unique contacts with message history
+    /// Get all unique contacts with message history.
+    /// Deduplicates by normalized phone number/email and resolves names via Contacts framework.
     func fetchContacts() throws -> [ContactProfile] {
         let sql = """
             SELECT
                 h.ROWID,
                 h.id,
                 COALESCE(h.uncanonicalized_id, h.id) as display_id,
-                MIN(m.date) as first_message_date
+                MIN(m.date) as first_message_date,
+                COUNT(m.ROWID) as message_count
             FROM handle h
             JOIN message m ON m.handle_id = h.ROWID
             GROUP BY h.ROWID
             ORDER BY MAX(m.date) DESC
         """
-        return try query(sql) { stmt in
-            let handleId = String(sqlite3_column_int64(stmt, 0))
-            let identifier = columnText(stmt, 1)
-            let displayId = columnText(stmt, 2)
-            let firstDate = cocoaDate(sqlite3_column_int64(stmt, 3))
 
-            let name = displayId.isEmpty ? identifier : displayId
-            let initials = String(name.prefix(1)).uppercased()
+        struct RawHandle {
+            let rowId: String
+            let identifier: String
+            let displayId: String
+            let firstDate: Date
+            let messageCount: Int
+        }
 
-            let idType: ContactIdentifier.IdentifierType = identifier.contains("@") ? .email : .phone
-            return ContactProfile(
-                id: handleId,
-                name: name,
-                initials: initials,
-                talkingSince: firstDate,
-                identifiers: [
-                    ContactIdentifier(value: identifier, type: idType, label: nil, addedDate: firstDate)
-                ]
+        let rawHandles: [RawHandle] = try query(sql) { stmt in
+            RawHandle(
+                rowId: String(sqlite3_column_int64(stmt, 0)),
+                identifier: columnText(stmt, 1),
+                displayId: columnText(stmt, 2),
+                firstDate: cocoaDate(sqlite3_column_int64(stmt, 3)),
+                messageCount: Int(sqlite3_column_int(stmt, 4))
             )
         }
+
+        // Resolve names from Contacts framework
+        let nameResolver = ContactNameResolver()
+
+        // Deduplicate by normalized identifier (strip +1, spaces, dashes)
+        var seen: [String: ContactProfile] = [:]
+        var handleIdMap: [String: String] = [:] // normalized -> best handleId (most messages)
+        var handleMessageCounts: [String: Int] = [:]
+
+        for handle in rawHandles {
+            let normalized = normalizeIdentifier(handle.identifier)
+
+            if let existing = seen[normalized] {
+                // Merge: keep the one with more messages as primary
+                let existingCount = handleMessageCounts[normalized] ?? 0
+                if handle.messageCount > existingCount {
+                    handleIdMap[normalized] = handle.rowId
+                    handleMessageCounts[normalized] = handle.messageCount
+                }
+                // Add this identifier to the existing contact
+                let idType: ContactIdentifier.IdentifierType = handle.identifier.contains("@") ? .email : .phone
+                var updatedIds = existing.identifiers
+                if !updatedIds.contains(where: { normalizeIdentifier($0.value) == normalized }) {
+                    updatedIds.append(ContactIdentifier(value: handle.identifier, type: idType, label: nil, addedDate: handle.firstDate))
+                }
+                seen[normalized] = ContactProfile(
+                    id: handleIdMap[normalized] ?? existing.id,
+                    name: existing.name,
+                    initials: existing.initials,
+                    talkingSince: min(existing.talkingSince, handle.firstDate),
+                    identifiers: updatedIds
+                )
+            } else {
+                // New contact — resolve name
+                let resolvedName = nameResolver.resolveName(for: handle.identifier)
+                let displayName = resolvedName ?? (handle.displayId.isEmpty ? handle.identifier : handle.displayId)
+                let initials = resolvedName != nil
+                    ? resolvedName!.components(separatedBy: " ").compactMap { $0.first.map(String.init) }.prefix(2).joined()
+                    : String(displayName.prefix(1)).uppercased()
+
+                let idType: ContactIdentifier.IdentifierType = handle.identifier.contains("@") ? .email : .phone
+                seen[normalized] = ContactProfile(
+                    id: handle.rowId,
+                    name: displayName,
+                    initials: initials.isEmpty ? "?" : initials,
+                    talkingSince: handle.firstDate,
+                    identifiers: [
+                        ContactIdentifier(value: handle.identifier, type: idType, label: nil, addedDate: handle.firstDate)
+                    ]
+                )
+                handleIdMap[normalized] = handle.rowId
+                handleMessageCounts[normalized] = handle.messageCount
+            }
+        }
+
+        // Sort by most recent (preserve original order since SQL already sorted)
+        return Array(seen.values).sorted { $0.talkingSince > $1.talkingSince }
+    }
+
+    private func normalizeIdentifier(_ id: String) -> String {
+        if id.contains("@") {
+            return id.lowercased().trimmingCharacters(in: .whitespaces)
+        }
+        // Phone: strip everything except digits, take last 10
+        let digits = id.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        return String(digits.suffix(10))
     }
 
     /// Get message stats for a specific contact
