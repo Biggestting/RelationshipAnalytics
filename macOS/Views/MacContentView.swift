@@ -181,6 +181,89 @@ struct MacContentView: View {
                         )
                     }
 
+                    // Synced results
+                    if !syncManager.contactStats.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Text("\(syncManager.contactStats.count) CONTACTS SYNCED")
+                                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                                    .foregroundStyle(AppTheme.textPrimary)
+                                Spacer()
+
+                                Button {
+                                    exportToFile()
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "square.and.arrow.up")
+                                            .font(.system(size: 10))
+                                        Text("EXPORT")
+                                            .font(.system(size: 9, weight: .medium, design: .monospaced))
+                                    }
+                                    .foregroundStyle(AppTheme.textSecondary)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .strokeBorder(AppTheme.cardBorder, lineWidth: 1)
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                            }
+
+                            // Synced contact summaries
+                            ForEach(Array(syncManager.contactStats.values.sorted { $0.messageStats.totalMessages > $1.messageStats.totalMessages }.prefix(20)), id: \.contact.id) { bundle in
+                                HStack(spacing: 8) {
+                                    Text(bundle.contact.initials)
+                                        .font(.system(size: 9, weight: .semibold, design: .monospaced))
+                                        .foregroundStyle(AppTheme.textPrimary)
+                                        .frame(width: 20, height: 20)
+                                        .background(Circle().strokeBorder(AppTheme.cardBorder, lineWidth: 1))
+
+                                    Text(bundle.contact.name.uppercased())
+                                        .font(.system(size: 10, weight: .medium, design: .monospaced))
+                                        .foregroundStyle(AppTheme.textPrimary)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    Text("\(bundle.messageStats.totalMessages)")
+                                        .font(.system(size: 10, weight: .bold, design: .monospaced))
+                                        .foregroundStyle(AppTheme.textPrimary)
+
+                                    Text("MSGS")
+                                        .font(.system(size: 8, design: .monospaced))
+                                        .foregroundStyle(AppTheme.textMuted)
+
+                                    if bundle.messageStats.emojiStats != nil {
+                                        Text(bundle.messageStats.emojiStats!.top3String)
+                                            .font(.system(size: 10))
+                                    }
+
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(size: 10))
+                                        .foregroundStyle(Color.green.opacity(0.6))
+                                }
+                                .padding(.vertical, 3)
+                            }
+
+                            if syncManager.contactStats.count > 20 {
+                                Text("+ \(syncManager.contactStats.count - 20) MORE")
+                                    .font(.system(size: 8, design: .monospaced))
+                                    .foregroundStyle(AppTheme.textMuted)
+                                    .frame(maxWidth: .infinity)
+                            }
+
+                            Text("VIEW FULL ANALYTICS ON YOUR IPHONE. EXPORT FILE TO TRANSFER WITHOUT ICLOUD.")
+                                .font(.system(size: 8, design: .monospaced))
+                                .foregroundStyle(AppTheme.textMuted)
+                                .lineSpacing(2)
+                        }
+                        .padding(14)
+                        .background(
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(AppTheme.cardBackground)
+                                .overlay(RoundedRectangle(cornerRadius: 6).strokeBorder(AppTheme.cardBorder, lineWidth: 1))
+                        )
+                    }
+
                     // Status
                     if !syncManager.syncProgress.isEmpty && !syncManager.isFetchingContacts {
                         Text(syncManager.syncProgress)
@@ -240,6 +323,43 @@ struct MacContentView: View {
             }
         }
     }
+
+    private func exportToFile() {
+        let panel = NSSavePanel()
+        panel.allowedContentTypes = [.json]
+        panel.nameFieldStringValue = "RelationshipAnalytics_Export.json"
+        panel.title = "Export Synced Data"
+
+        panel.begin { response in
+            guard response == .OK, let url = panel.url else { return }
+
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            encoder.dateEncodingStrategy = .iso8601
+
+            let exportData = syncManager.contactStats.values.map { bundle in
+                ExportBundle(
+                    contact: bundle.contact,
+                    messageStats: bundle.messageStats,
+                    callStats: bundle.callStats,
+                    rankData: bundle.rankData
+                )
+            }
+
+            if let data = try? encoder.encode(exportData) {
+                try? data.write(to: url)
+                syncManager.syncProgress = "Exported to \(url.lastPathComponent)"
+            }
+        }
+    }
+}
+
+/// Codable wrapper for export
+private struct ExportBundle: Codable {
+    let contact: ContactProfile
+    let messageStats: MessageStats
+    let callStats: CallStats
+    let rankData: RankData
 }
 
 struct ContactPickerRow: View {

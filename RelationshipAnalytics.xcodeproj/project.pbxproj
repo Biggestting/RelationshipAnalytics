@@ -84,6 +84,7 @@
 		F1F8B782A5887BBF700B08C7 /* FirstMessagesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09DB1296C86AB21F843836 /* FirstMessagesCard.swift */; };
 		F80BD569F34BB11648895B6E /* CloudKitSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369835231B408935C0FAA75 /* CloudKitSyncService.swift */; };
 		F91565ED8A34E56C894D4044 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5082C202F0B148267454573 /* MockDataProvider.swift */; };
+		FD05979576F4557B1D55D3B3 /* MacExportImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0636BE6862EDA80921222A7 /* MacExportImporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,7 @@
 		D32CD8D0B4402A8EE0B07E91 /* CallPatternsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPatternsCard.swift; sourceTree = "<group>"; };
 		D450E0FAAD0B7E29EACDC0E8 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		D61F314ECB9199FFB80DD1DC /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		E0636BE6862EDA80921222A7 /* MacExportImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacExportImporter.swift; sourceTree = "<group>"; };
 		E109344753C5617F71734E1F /* MessageActivityHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActivityHeatmap.swift; sourceTree = "<group>"; };
 		E81825180D2635DAF76A7CA1 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
 		E8360BE5A433C104FE7E1E53 /* VoiceMessagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMessagesCard.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				B8F0356D6919862D7CFC4A77 /* CallTracker.swift */,
 				71B21DC3CB34445A221B90C2 /* CloudKitFetcher.swift */,
 				8A5862887C8D1423EA85B7D2 /* LiveDataStore.swift */,
+				E0636BE6862EDA80921222A7 /* MacExportImporter.swift */,
 				59963A65BD7C3B18B4014303 /* MessageTracker.swift */,
 				769B7CA7B370D0E4C870F472 /* ShortcutsIntegration.swift */,
 				2DD86D7CD3D2D79F047A942F /* AppIntents */,
@@ -514,6 +517,7 @@
 				E9BE3DAC4F44B5109E432E77 /* InstagramParser.swift in Sources */,
 				D8AB0A2983C1CB07A7F00803 /* LiveDataStore.swift in Sources */,
 				E9A471BFAA400E99A38A226E /* LongestConvoCard.swift in Sources */,
+				FD05979576F4557B1D55D3B3 /* MacExportImporter.swift in Sources */,
 				801379D7BDCA25405079A7FB /* ManageNumbersSheet.swift in Sources */,
 				4F6E89328AD6E0AB6720006F /* MessageActivityDetailView.swift in Sources */,
 				1A41CA09445D96E18F75755C /* MessageActivityHeatmap.swift in Sources */,
