@@ -15,7 +15,8 @@ final class SyncManager: ObservableObject {
     private let messageService = MessageDatabaseService()
     private let callLogService = CallLogService()
     private let rankingService = RankingService()
-    private let cloudKit = CloudKitSyncService()
+    // CloudKit disabled until paid developer account is active
+    // private let cloudKit = CloudKitSyncService()
 
     var lastSyncFormatted: String {
         guard let lastSync else { return "Never" }
@@ -103,31 +104,22 @@ final class SyncManager: ObservableObject {
             syncProgress = "Saving locally..."
             saveLocally(bundles: bundles)
 
-            // STEP 6: Sync to CloudKit
-            syncProgress = "Syncing to iCloud..."
-            var cloudErrors: [String] = []
-            for (_, bundle) in bundles {
-                do {
-                    try await cloudKit.saveContactStats(
-                        contact: bundle.contact,
-                        messageStats: bundle.messageStats,
-                        callStats: bundle.callStats,
-                        rankData: bundle.rankData
-                    )
-                } catch {
-                    cloudErrors.append("\(bundle.contact.name): \(error.localizedDescription)")
-                }
-            }
+            // STEP 6: Sync to CloudKit (disabled until paid developer account is active)
+            // TODO: Re-enable CloudKit sync when developer account transitions from personal
+            // syncProgress = "Syncing to iCloud..."
+            // var cloudErrors: [String] = []
+            // for (_, bundle) in bundles {
+            //     do {
+            //         try await cloudKit.saveContactStats(...)
+            //     } catch {
+            //         cloudErrors.append(...)
+            //     }
+            // }
 
             lastSync = Date()
             UserDefaults.standard.set(Date(), forKey: "lastMacSync")
 
-            if cloudErrors.isEmpty {
-                syncProgress = "Sync complete! \(contacts.count) contacts synced to iCloud."
-            } else {
-                syncProgress = "Synced \(contacts.count - cloudErrors.count)/\(contacts.count) to iCloud. \(cloudErrors.count) failed."
-                // Still mark as success — local data is saved
-            }
+            syncProgress = "Sync complete! \(contacts.count) contacts saved locally."
 
         } catch {
             self.error = error.localizedDescription
