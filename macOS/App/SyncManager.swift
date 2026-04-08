@@ -6,11 +6,13 @@ final class SyncManager: ObservableObject {
     @Published var contacts: [ContactProfile] = []
     @Published var contactStats: [String: ContactAnalyticsBundle] = [:]
     @Published var isLoading = false
+    @Published var isFetchingContacts = false
     @Published var error: String?
     @Published var lastSync: Date?
     @Published var syncProgress: String = ""
     @Published var processedCount: Int = 0
     @Published var totalCount: Int = 0
+    @Published var selectedContactIds: Set<String> = []
 
     private let rankingService = RankingService()
 
@@ -21,17 +23,72 @@ final class SyncManager: ObservableObject {
         return formatter.localizedString(for: lastSync, relativeTo: Date())
     }
 
-    func syncAll() async {
+    var selectedCount: Int { selectedContactIds.count }
+
+    // MARK: - Step 1: Fetch contact list (fast, no stats)
+
+    func fetchContactList() async {
+        isFetchingContacts = true
+        error = nil
+        syncProgress = "Loading contacts..."
+
+        do {
+            let fetched = try await Task.detached(priority: .userInitiated) { () -> [ContactProfile] in
+                let service = MessageDatabaseService()
+                try service.open()
+                defer { service.close() }
+                return try service.fetchContacts()
+            }.value
+
+            contacts = fetched
+            syncProgress = "\(fetched.count) contacts found. Select contacts to sync."
+        } catch {
+            self.error = error.localizedDescription
+            syncProgress = "Error: \(error.localizedDescription)"
+        }
+
+        isFetchingContacts = false
+    }
+
+    // MARK: - Select helpers
+
+    func selectAll() {
+        selectedContactIds = Set(contacts.map { $0.id })
+    }
+
+    func deselectAll() {
+        selectedContactIds.removeAll()
+    }
+
+    func toggleContact(_ id: String) {
+        if selectedContactIds.contains(id) {
+            selectedContactIds.remove(id)
+        } else {
+            selectedContactIds.insert(id)
+        }
+    }
+
+    // MARK: - Step 2: Sync selected contacts only
+
+    func syncSelected() async {
+        let idsToSync = selectedContactIds
+        guard !idsToSync.isEmpty else {
+            syncProgress = "No contacts selected."
+            return
+        }
+
         isLoading = true
         error = nil
         processedCount = 0
-        syncProgress = "Opening iMessage database..."
+        totalCount = idsToSync.count
+        syncProgress = "Syncing \(idsToSync.count) contacts..."
 
-        // Run all heavy database work off the main thread
+        let contactsToSync = contacts.filter { idsToSync.contains($0.id) }
+
         let result: SyncResult
         do {
             result = try await Task.detached(priority: .userInitiated) {
-                try await self.performDatabaseWork()
+                try await self.performDatabaseWork(for: contactsToSync)
             }.value
         } catch {
             self.error = error.localizedDescription
@@ -40,11 +97,7 @@ final class SyncManager: ObservableObject {
             return
         }
 
-        // Back on main thread — update UI
-        contacts = result.contacts
-        totalCount = result.contacts.count
-
-        // Calculate rankings (lightweight, fine on main thread)
+        // Calculate rankings
         syncProgress = "Calculating rankings..."
         var bundles = result.bundles
         let allWeeklyCounts = result.weeklyCounts
@@ -62,32 +115,34 @@ final class SyncManager: ObservableObject {
             )
         }
 
-        contactStats = bundles
+        // Merge with existing stats (don't overwrite unselected contacts)
+        for (id, bundle) in bundles {
+            contactStats[id] = bundle
+        }
 
-        // Save locally
         syncProgress = "Saving..."
-        saveLocally(bundles: bundles)
+        saveLocally(bundles: contactStats)
 
         lastSync = Date()
         UserDefaults.standard.set(Date(), forKey: "lastMacSync")
-        syncProgress = "Sync complete! \(contacts.count) contacts saved."
+        syncProgress = "Done! \(idsToSync.count) contacts synced."
         isLoading = false
     }
 
-    /// All heavy SQLite work runs here, OFF the main thread
-    nonisolated private func performDatabaseWork() async throws -> SyncResult {
+    /// Sync ALL contacts (convenience)
+    func syncAll() async {
+        selectAll()
+        await syncSelected()
+    }
+
+    // MARK: - Database Work (background thread)
+
+    nonisolated private func performDatabaseWork(for contactsToSync: [ContactProfile]) async throws -> SyncResult {
         let messageService = MessageDatabaseService()
         let callLogService = CallLogService()
 
         try messageService.open()
         defer { messageService.close() }
-
-        let contacts = try messageService.fetchContacts()
-
-        await MainActor.run {
-            self.syncProgress = "Found \(contacts.count) contacts..."
-            self.totalCount = contacts.count
-        }
 
         var callLogAvailable = false
         do {
@@ -95,7 +150,7 @@ final class SyncManager: ObservableObject {
             callLogAvailable = true
         } catch {
             await MainActor.run {
-                self.syncProgress = "Call history not available. Continuing with messages..."
+                self.syncProgress = "Call history not available. Messages only..."
             }
         }
         defer { if callLogAvailable { callLogService.close() } }
@@ -104,10 +159,10 @@ final class SyncManager: ObservableObject {
         var allWeeklyCounts: [(id: String, weeklyMessageCounts: [Date: Int])] = []
         let rankingService = RankingService()
 
-        for (index, contact) in contacts.enumerated() {
+        for (index, contact) in contactsToSync.enumerated() {
             await MainActor.run {
                 self.processedCount = index + 1
-                self.syncProgress = "[\(index + 1)/\(contacts.count)] \(contact.name)..."
+                self.syncProgress = "[\(index + 1)/\(contactsToSync.count)] \(contact.name)..."
             }
 
             let messageStats = try messageService.fetchMessageStats(handleId: contact.id)
@@ -130,15 +185,16 @@ final class SyncManager: ObservableObject {
             )
         }
 
-        return SyncResult(contacts: contacts, bundles: bundles, weeklyCounts: allWeeklyCounts)
+        return SyncResult(contacts: contactsToSync, bundles: bundles, weeklyCounts: allWeeklyCounts)
     }
 
     // MARK: - Local Storage
 
     private func saveLocally(bundles: [String: ContactAnalyticsBundle]) {
         let encoder = JSONEncoder()
+        let syncedContacts = bundles.values.map { $0.contact }
 
-        if let data = try? encoder.encode(contacts) {
+        if let data = try? encoder.encode(syncedContacts) {
             UserDefaults.standard.set(data, forKey: "syncedContacts")
         }
 
@@ -153,30 +209,25 @@ final class SyncManager: ObservableObject {
                 UserDefaults.standard.set(rankData, forKey: "stats_rank_\(id)")
             }
         }
-
         UserDefaults.standard.set(Date(), forKey: "lastLocalSync")
     }
 
     func loadLocal() -> [String: ContactAnalyticsBundle] {
         let decoder = JSONDecoder()
         guard let contactsData = UserDefaults.standard.data(forKey: "syncedContacts"),
-              let savedContacts = try? decoder.decode([ContactProfile].self, from: contactsData) else {
-            return [:]
-        }
+              let savedContacts = try? decoder.decode([ContactProfile].self, from: contactsData) else { return [:] }
 
         var bundles: [String: ContactAnalyticsBundle] = [:]
         for contact in savedContacts {
-            let msgStats: MessageStats? = UserDefaults.standard.data(forKey: "stats_msg_\(contact.id)")
+            let msgStats = UserDefaults.standard.data(forKey: "stats_msg_\(contact.id)")
                 .flatMap { try? decoder.decode(MessageStats.self, from: $0) }
-            let callStats: CallStats? = UserDefaults.standard.data(forKey: "stats_call_\(contact.id)")
+            let callStats = UserDefaults.standard.data(forKey: "stats_call_\(contact.id)")
                 .flatMap { try? decoder.decode(CallStats.self, from: $0) }
-            let rankData: RankData? = UserDefaults.standard.data(forKey: "stats_rank_\(contact.id)")
+            let rankData = UserDefaults.standard.data(forKey: "stats_rank_\(contact.id)")
                 .flatMap { try? decoder.decode(RankData.self, from: $0) }
-
             if let msg = msgStats {
                 bundles[contact.id] = ContactAnalyticsBundle(
-                    contact: contact,
-                    messageStats: msg,
+                    contact: contact, messageStats: msg,
                     callStats: callStats ?? Self.emptyCallStats(contactId: contact.id),
                     rankData: rankData ?? RankData(contactId: contact.id, currentRank: 0, bestRank: 0, currentRankDate: Date(), bestRankDate: Date(), rankHistory: [])
                 )
