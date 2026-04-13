@@ -43,8 +43,3 @@ struct ActiveStreakCard: View {
     }
 }
 
-#Preview {
-    ActiveStreakCard(streak: 0, bestStreak: 4)
-        .frame(width: 170)
-        .background(AppTheme.background)
-}

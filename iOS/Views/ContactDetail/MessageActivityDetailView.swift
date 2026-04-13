@@ -448,14 +448,6 @@ struct HourlyMessageData: Identifiable {
     var id: Int { hour }
     let hour: Int
     let count: Int
+
 }
 
-#Preview {
-    NavigationStack {
-        MessageActivityDetailView(
-            stats: MockDataProvider.messageStats,
-            contactName: "Nina"
-        )
-    }
-    .preferredColorScheme(.dark)
-}

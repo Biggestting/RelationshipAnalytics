@@ -125,7 +125,3 @@ struct HeaderView: View {
     }
 }
 
-#Preview {
-    HeaderView(contact: MockDataProvider.contact)
-        .background(AppTheme.background)
-}

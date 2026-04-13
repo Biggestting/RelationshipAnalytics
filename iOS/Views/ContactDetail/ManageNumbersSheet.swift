@@ -246,11 +246,3 @@ struct AddIdentifierSheet: View {
     }
 }
 
-#Preview {
-    ManageNumbersSheet(
-        contactId: "test",
-        contactName: "Nina",
-        identifiers: .constant(MockDataProvider.contact.identifiers),
-        isPresented: .constant(true)
-    )
-}

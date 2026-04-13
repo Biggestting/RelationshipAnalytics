@@ -101,16 +101,5 @@ struct ContactDetailView: View {
         }
         .toolbarBackground(.hidden, for: .navigationBar)
     }
-}
 
-#Preview {
-    NavigationStack {
-        ContactDetailView(
-            contact: MockDataProvider.contact,
-            messageStats: MockDataProvider.messageStats,
-            callStats: MockDataProvider.callStats,
-            rankData: MockDataProvider.rankData
-        )
-    }
-    .preferredColorScheme(.dark)
 }

@@ -55,8 +55,3 @@ struct EditedUnsentCard: View {
     }
 }
 
-#Preview {
-    EditedUnsentCard(stats: MockDataProvider.messageStats)
-        .padding()
-        .background(AppTheme.background)
-}

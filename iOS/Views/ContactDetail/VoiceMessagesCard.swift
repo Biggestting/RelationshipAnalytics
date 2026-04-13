@@ -113,8 +113,3 @@ struct VoiceMessagesCard: View {
     }
 }
 
-#Preview {
-    VoiceMessagesCard(stats: MockDataProvider.messageStats.voiceMessages)
-        .padding()
-        .background(AppTheme.background)
-}

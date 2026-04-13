@@ -104,8 +104,3 @@ struct FaceTimeCard: View {
     }
 }
 
-#Preview {
-    FaceTimeCard(stats: MockDataProvider.callStats.faceTimeStats)
-        .padding()
-        .background(AppTheme.background)
-}

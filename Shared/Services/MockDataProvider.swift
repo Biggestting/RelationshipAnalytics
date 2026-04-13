@@ -35,7 +35,7 @@ enum MockDataProvider {
         totalSent: 237,
         totalReceived: 240,
         totalMessages: 477,
-        messageActivity: generateHeatmapData(),
+        messageActivity: _heatmap,
         activeStreak: 0,
         bestStreak: 4,
         youStartPercentage: 74,
@@ -97,9 +97,9 @@ enum MockDataProvider {
         answeredCalls: 26,
         averageCallDuration: 60, // 1 minute
         lastAnsweredDate: dateFrom("2026-03-14"),
-        monthlyCallData: generateMonthlyCallData(),
-        callRecords: generateCallRecords(),
-        hourlyCallPattern: generateHourlyPattern(),
+        monthlyCallData: _monthly,
+        callRecords: _calls,
+        hourlyCallPattern: _hourly,
         missedStats: MissedCallStats(
             youMissed: 2,
             theyMissed: 5,
@@ -126,8 +126,15 @@ enum MockDataProvider {
         bestRank: 14,
         currentRankDate: dateFrom("2026-03-26"),
         bestRankDate: dateFrom("2026-03-26"),
-        rankHistory: generateRankHistory()
+        rankHistory: _rank
     )
+
+    // MARK: - Cached generated data (computed once, reused)
+    private static let _heatmap = generateHeatmapData()
+    private static let _monthly = generateMonthlyCallData()
+    private static let _calls = generateCallRecords()
+    private static let _hourly = generateHourlyPattern()
+    private static let _rank = generateRankHistory()
 
     // MARK: - Generators
 

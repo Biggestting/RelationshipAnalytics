@@ -23,8 +23,3 @@ struct YouStartCard: View {
     }
 }
 
-#Preview {
-    YouStartCard(percentage: 74)
-        .frame(width: 170)
-        .background(Color.black)
-}

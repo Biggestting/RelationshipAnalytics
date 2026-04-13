@@ -223,12 +223,3 @@ struct WrappedCardView: View {
     }
 }
 
-#Preview {
-    YearWrappedView(
-        stats: MockDataProvider.messageStats,
-        callStats: MockDataProvider.callStats,
-        contactName: "Nina"
-    )
-    .padding()
-    .background(Color.black)
-}

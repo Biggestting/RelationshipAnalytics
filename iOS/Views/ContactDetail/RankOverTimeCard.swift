@@ -92,8 +92,3 @@ struct RankOverTimeCard: View {
     }
 }
 
-#Preview {
-    RankOverTimeCard(rankData: MockDataProvider.rankData)
-        .padding()
-        .background(AppTheme.background)
-}

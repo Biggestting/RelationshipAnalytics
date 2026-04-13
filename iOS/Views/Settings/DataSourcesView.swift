@@ -505,6 +505,3 @@ struct DataSourceComparisonRow: View {
     }
 }
 
-#Preview {
-    DataSourcesView()
-}

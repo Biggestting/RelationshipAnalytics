@@ -6,6 +6,3 @@ struct GradientBackground: View {
     }
 }
 
-#Preview {
-    GradientBackground()
-}

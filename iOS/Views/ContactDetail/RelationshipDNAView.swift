@@ -304,8 +304,3 @@ struct DNAInfoRow: View {
     }
 }
 
-#Preview {
-    RelationshipDNAView(stats: MockDataProvider.messageStats, contactName: "Nina")
-        .padding()
-        .background(Color.black)
-}

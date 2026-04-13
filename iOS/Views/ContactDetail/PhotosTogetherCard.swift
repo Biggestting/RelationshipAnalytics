@@ -179,8 +179,3 @@ struct PhotosTogetherCard: View {
     }
 }
 
-#Preview {
-    PhotosTogetherCard(contactName: "Nina")
-        .padding()
-        .background(Color.black)
-}

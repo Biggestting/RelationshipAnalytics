@@ -69,11 +69,3 @@ struct MessageActivityHeatmap: View {
         .buttonStyle(.plain)
     }
 }
-
-#Preview {
-    NavigationStack {
-        MessageActivityHeatmap(stats: MockDataProvider.messageStats, contactName: "Nina")
-            .padding()
-            .background(AppTheme.background)
-    }
-}

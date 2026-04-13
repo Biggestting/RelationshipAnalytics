@@ -78,8 +78,3 @@ struct CallTimeCard: View {
     }
 }
 
-#Preview {
-    CallTimeCard(callStats: MockDataProvider.callStats)
-        .padding()
-        .background(AppTheme.background)
-}

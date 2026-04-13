@@ -47,8 +47,3 @@ struct FirstMessagesCard: View {
     }
 }
 
-#Preview {
-    FirstMessagesCard(firstMessage: MockDataProvider.messageStats.firstMessageSent)
-        .padding()
-        .background(AppTheme.background)
-}

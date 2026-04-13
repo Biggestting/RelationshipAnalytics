@@ -20,13 +20,3 @@ struct GlassCard<Content: View>: View {
             )
     }
 }
-
-#Preview {
-    GlassCard {
-        Text("NOTHING")
-            .font(AppTheme.cardTitle)
-            .foregroundStyle(AppTheme.textPrimary)
-    }
-    .padding()
-    .background(AppTheme.background)
-}

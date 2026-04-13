@@ -53,8 +53,3 @@ struct LongestConvoCard: View {
     }
 }
 
-#Preview {
-    LongestConvoCard(convo: MockDataProvider.messageStats.longestConvo)
-        .padding()
-        .background(Color.black)
-}

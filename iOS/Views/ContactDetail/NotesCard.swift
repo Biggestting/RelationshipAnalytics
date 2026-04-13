@@ -123,8 +123,3 @@ struct NoteEditorSheet: View {
     }
 }
 
-#Preview {
-    NotesCard(notes: [], contactId: "test_001")
-        .padding()
-        .background(Color.black)
-}

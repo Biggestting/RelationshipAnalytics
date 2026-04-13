@@ -115,8 +115,3 @@ struct CallLogCard: View {
     }
 }
 
-#Preview {
-    CallLogCard(records: MockDataProvider.callStats.callRecords)
-        .padding()
-        .background(Color.black)
-}

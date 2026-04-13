@@ -99,8 +99,3 @@ struct AnswerRateRow: View {
     }
 }
 
-#Preview {
-    MissedCallsCard(stats: MockDataProvider.callStats.missedStats, contactName: "Nina")
-        .padding()
-        .background(AppTheme.background)
-}

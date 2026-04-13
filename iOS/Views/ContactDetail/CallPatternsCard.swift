@@ -8,20 +8,28 @@ struct CallPatternsCard: View {
     private let dayLabels = ["S", "M", "T", "W", "T", "F", "S"]
     private let hourLabels = [0, 3, 6, 9, 12, 15, 18, 21]
 
+    // Pre-build lookup dictionary: "day-hour" -> intensity (O(1) instead of O(n))
+    private var lookup: [String: Int] {
+        var dict: [String: Int] = [:]
+        for d in hourlyData {
+            dict["\(d.dayOfWeek)-\(d.hour)"] = d.intensity
+        }
+        return dict
+    }
+
     var body: some View {
+        let lut = lookup // compute once per render
+
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text("CALL PATTERNS")
                     .font(AppTheme.cardTitle)
                     .foregroundStyle(AppTheme.textPrimary)
 
-                // Heatmap grid: 7 rows (days) x 24 cols (hours)
                 VStack(spacing: cellSpacing) {
-                    // Hour labels row
                     HStack(spacing: 0) {
                         Text("")
                             .frame(width: 16)
-
                         ForEach(0..<24, id: \.self) { hour in
                             if hourLabels.contains(hour) {
                                 Text(hourLabel(hour))
@@ -35,7 +43,6 @@ struct CallPatternsCard: View {
                         }
                     }
 
-                    // Day rows
                     ForEach(1...7, id: \.self) { day in
                         HStack(spacing: cellSpacing) {
                             Text(dayLabels[day - 1])
@@ -44,23 +51,20 @@ struct CallPatternsCard: View {
                                 .frame(width: 12, alignment: .trailing)
 
                             ForEach(0..<24, id: \.self) { hour in
-                                let data = hourlyData.first { $0.dayOfWeek == day && $0.hour == hour }
+                                let intensity = lut["\(day)-\(hour)"] ?? 0
                                 Rectangle()
-                                    .fill(AppTheme.heatmapColors[data?.intensity ?? 0])
+                                    .fill(AppTheme.heatmapColors[intensity])
                                     .frame(width: cellSize, height: cellSize)
                             }
                         }
                     }
                 }
 
-                // Legend
                 HStack {
                     Text("FEWER CALLS")
                         .font(.system(size: 8, design: .monospaced))
                         .foregroundStyle(AppTheme.textMuted)
-
                     Spacer()
-
                     HStack(spacing: 2) {
                         ForEach(0..<5) { level in
                             Rectangle()
@@ -68,9 +72,7 @@ struct CallPatternsCard: View {
                                 .frame(width: 8, height: 8)
                         }
                     }
-
                     Spacer()
-
                     Text("MORE CALLS")
                         .font(.system(size: 8, design: .monospaced))
                         .foregroundStyle(AppTheme.textMuted)
@@ -83,13 +85,7 @@ struct CallPatternsCard: View {
         if hour == 0 { return "12A" }
         if hour == 12 { return "12P" }
         let h = hour % 12
-        let suffix = hour < 12 ? "A" : "P"
-        return "\(h)\(suffix)"
+        return "\(h)\(hour < 12 ? "A" : "P")"
     }
 }
 
-#Preview {
-    CallPatternsCard(hourlyData: MockDataProvider.callStats.hourlyCallPattern)
-        .padding()
-        .background(Color.black)
-}

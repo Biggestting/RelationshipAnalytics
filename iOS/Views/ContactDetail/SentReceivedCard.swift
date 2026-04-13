@@ -43,8 +43,3 @@ struct SentReceivedCard: View {
     }
 }
 
-#Preview {
-    SentReceivedCard(stats: MockDataProvider.messageStats)
-        .padding()
-        .background(AppTheme.background)
-}

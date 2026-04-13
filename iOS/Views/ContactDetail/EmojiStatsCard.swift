@@ -102,8 +102,3 @@ struct EmojiStatsCard: View {
     }
 }
 
-#Preview {
-    EmojiStatsCard(emojiStats: MockDataProvider.messageStats.emojiStats, contactName: "Nina")
-        .padding()
-        .background(Color.black)
-}

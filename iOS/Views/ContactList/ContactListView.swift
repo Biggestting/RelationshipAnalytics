@@ -528,10 +528,3 @@ struct ImportedContactRow: View {
         )
     }
 }
-
-#Preview {
-    NavigationStack {
-        ContactListView(contacts: [], cloudKitBundles: [])
-            .environmentObject(AppearanceManager())
-    }
-}

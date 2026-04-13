@@ -48,8 +48,3 @@ struct ReplyTimeCard: View {
     }
 }
 
-#Preview {
-    ReplyTimeCard(stats: MockDataProvider.messageStats, contactName: "Nina")
-        .padding()
-        .background(Color.black)
-}

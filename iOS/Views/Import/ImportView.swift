@@ -350,6 +350,3 @@ struct ExportInstructionsView: View {
     }
 }
 
-#Preview {
-    ImportView()
-}

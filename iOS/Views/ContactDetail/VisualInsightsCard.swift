@@ -68,12 +68,3 @@ struct VisualInsightsCard: View {
     }
 }
 
-#Preview {
-    VisualInsightsCard(
-        stats: MockDataProvider.messageStats,
-        callStats: MockDataProvider.callStats,
-        contactName: "Nina"
-    )
-    .padding()
-    .background(Color.black)
-}
