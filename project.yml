@@ -11,7 +11,9 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.9"
+    # Set DEVELOPMENT_TEAM to your 10-char Apple Developer Team ID before archiving.
     DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
 
 targets:
 
@@ -38,12 +40,16 @@ targets:
             CFBundleURLName: "com.relationshipanalytics.ios"
         BGTaskSchedulerPermittedIdentifiers:
           - "com.relationshipanalytics.refresh"
+        UIBackgroundModes:
+          - fetch
+          - processing
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.ios
         TARGETED_DEVICE_FAMILY: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ENABLE_PREVIEWS: YES
+        CODE_SIGN_ENTITLEMENTS: iOS/RelationshipAnalytics.entitlements
 
   # macOS App
   RelationshipAnalytics-macOS:
@@ -67,6 +73,11 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.relationshipanalytics.macos
         CODE_SIGN_ENTITLEMENTS: macOS/RelationshipAnalytics.entitlements
         ENABLE_PREVIEWS: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # macOS distribution: Developer ID + notarization (NOT Mac App Store / TestFlight).
+        # The app reads ~/Library/Messages/chat.db which requires user-granted Full Disk Access
+        # and is incompatible with App Sandbox, which MAS requires.
 
 schemes:
   RelationshipAnalytics-iOS:

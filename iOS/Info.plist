@@ -36,6 +36,11 @@
 	<string>1</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access your photos to find pictures with this contact</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>
