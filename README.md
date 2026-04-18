@@ -47,19 +47,62 @@ RelationshipAnalytics/
    brew install xcodegen
    ```
 
-2. Generate the Xcode project:
+2. Set your Apple Developer Team ID in `project.yml` under
+   `settings.base.DEVELOPMENT_TEAM`.
+
+3. Generate the Xcode project:
    ```bash
    cd RelationshipAnalytics
    xcodegen generate
    ```
 
-3. Open `RelationshipAnalytics.xcodeproj` in Xcode
+4. Open `RelationshipAnalytics.xcodeproj` in Xcode.
 
-4. Set your development team in signing settings
+5. Add app icons:
+   - iOS: drop a 1024×1024 PNG into `iOS/Resources/Assets.xcassets/AppIcon.appiconset/`.
+   - macOS: populate `macOS/Resources/Assets.xcassets/AppIcon.appiconset/` with the
+     full Mac icon size set (16/32/128/256/512 @ 1x and 2x).
 
-5. **macOS app**: Grant Full Disk Access in System Settings > Privacy & Security
+6. **macOS app**: Grant Full Disk Access in System Settings > Privacy & Security.
 
-6. **CloudKit**: Set up a CloudKit container `iCloud.com.relationshipanalytics` in your Apple Developer account
+7. **CloudKit**: In the Apple Developer portal, create the container
+   `iCloud.com.relationshipanalytics` and enable it on both App IDs. On the
+   iOS App ID also enable **Background Modes** (Background fetch, Background
+   processing).
+
+## Distribution
+
+This project ships on two different tracks — they are not symmetric.
+
+### iOS — TestFlight / App Store
+
+Supported. The iOS target is configured with:
+
+- `iOS/RelationshipAnalytics.entitlements` (iCloud + CloudKit for
+  `iCloud.com.relationshipanalytics`)
+- `UIBackgroundModes: fetch, processing` so the declared
+  `BGTaskScheduler` identifier registers at runtime
+- `CODE_SIGN_STYLE: Automatic`
+
+To ship: Xcode → Product → Archive → Distribute App → App Store Connect →
+upload → TestFlight.
+
+### macOS — Developer ID + notarization (NOT TestFlight)
+
+The macOS app reads `~/Library/Messages/chat.db`, which requires
+**Full Disk Access** granted by the user. That is fundamentally incompatible
+with **App Sandbox**, which the Mac App Store and macOS TestFlight both
+require. Submissions will be rejected.
+
+The macOS target is instead configured for Developer ID distribution:
+
+- App Sandbox intentionally disabled
+- Hardened Runtime enabled (required for notarization)
+- CloudKit entitlements present
+
+To ship: Xcode → Product → Archive → Distribute App → **Developer ID** →
+Upload for notarization → staple → distribute the `.app` directly (website,
+DMG, etc.).
 
 ## How It Works
 
@@ -74,6 +117,8 @@ RelationshipAnalytics/
 - No data is sent to any third-party servers
 - The macOS app only reads data — it never modifies your messages or call history
 - Full Disk Access is required solely to read the iMessage database
+- The iOS app is a display client — it never reads local message data on
+  the phone (iOS does not expose `chat.db` to third-party apps)
 
 ## Tech Stack
 
